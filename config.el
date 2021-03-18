@@ -30,6 +30,11 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
+(add-hook! 'org-mode-hook #'+org-pretty-mode)
+(after! org
+  (map! :map org-mode-map
+        :n "M-j" #'org-metadown
+        :n "M-k" #'org-metaup))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -54,6 +59,25 @@
 ;; they are implemented.
 
 
-;; Doom disables auto-save and backup files by default
-(setq auto-save-default t
-      make-backup-files t)
+(setq
+ ;; remap meta to command key
+ mac-command-modifier 'meta
+ ;; Doom disables auto-save
+ auto-save-default t
+ ;; Disable quit prompt
+ confirm-kill-emacs nil
+ ;; Backup files by default
+ make-backup-files t
+ ;; Set default projective path to Projects dir
+ projectile-project-search-path `("~/Projects/")
+
+ ;; js-prettier config
+ prettier-js-args '("--single-quote")
+
+ ;; Allow word linking
+ org-link-search-must-match-exact-headline nil
+
+ )
+
+;; Vue mode
+(add-hook 'vue-mode-hook #'lsp!)
