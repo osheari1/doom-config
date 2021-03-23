@@ -77,7 +77,23 @@
  ;; Allow word linking
  org-link-search-must-match-exact-headline nil
 
+ ;; Emacs performance
+ gc-cons-threshold 400000000
+ read-process-output-max (* 1024 1024) ;; 1mb
+ lsp-idle-delay 0.500
+
  )
 
 ;; Vue mode
 (add-hook 'vue-mode-hook #'lsp!)
+
+
+;; Javascript repl
+(add-hook 'js-mode-hook
+          (lambda ()
+            (define-key js-mode-map (kbd "C-x C-e") 'nodejs-repl-send-last-expression)
+            (define-key js-mode-map (kbd "C-c C-j") 'nodejs-repl-send-line)
+            (define-key js-mode-map (kbd "C-c C-r") 'nodejs-repl-send-region)
+            (define-key js-mode-map (kbd "C-c C-c") 'nodejs-repl-send-buffer)
+            (define-key js-mode-map (kbd "C-c C-l") 'nodejs-repl-load-file)
+            (define-key js-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl)))
