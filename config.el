@@ -9,6 +9,7 @@
 (setq user-full-name "Riley O'Shea"
       user-mail-address "osheari1@gmail.com")
 
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
 ;;
@@ -78,9 +79,9 @@
  org-link-search-must-match-exact-headline nil
 
  ;; Emacs performance
- gc-cons-threshold 400000000
- read-process-output-max (* 1024 1024) ;; 1mb
- lsp-idle-delay 0.500
+ ;; gc-cons-threshold 400000000
+ ;; read-process-output-max (* 1024 1024) ;; 1mb
+ ;; lsp-idle-delay 0.500
 
  )
 
@@ -97,3 +98,6 @@
             (define-key js-mode-map (kbd "C-c C-c") 'nodejs-repl-send-buffer)
             (define-key js-mode-map (kbd "C-c C-l") 'nodejs-repl-load-file)
             (define-key js-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl)))
+
+;; Maximize on startup
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
