@@ -72,8 +72,6 @@
  ;; Set default projective path to Projects dir
  projectile-project-search-path `("~/Projects/")
 
- ;; js-prettier config
- prettier-js-args '("--single-quote")
 
  ;; Allow word linking
  org-link-search-must-match-exact-headline nil
@@ -89,7 +87,7 @@
 (add-hook 'vue-mode-hook #'lsp!)
 
 
-;; Javascript repl
+;; ========== Javascript ==========
 (add-hook 'js-mode-hook
           (lambda ()
             (define-key js-mode-map (kbd "C-x C-e") 'nodejs-repl-send-last-expression)
@@ -98,6 +96,10 @@
             (define-key js-mode-map (kbd "C-c C-c") 'nodejs-repl-send-buffer)
             (define-key js-mode-map (kbd "C-c C-l") 'nodejs-repl-load-file)
             (define-key js-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl)))
+
+(setq-hook! 'js2-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
+prettier-js-args '("--single-quote") ;; js-prettier config
+
 
 ;; Maximize on startup
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
