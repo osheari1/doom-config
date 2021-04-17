@@ -77,8 +77,8 @@
  org-link-search-must-match-exact-headline nil
 
  ;; Emacs performance
- ;; gc-cons-threshold 400000000
- ;; read-process-output-max (* 1024 1024) ;; 1mb
+ gc-cons-threshold 200000000
+ read-process-output-max (* 1024 1024) ;; 1mb
  ;; lsp-idle-delay 0.500
 
  )
@@ -94,12 +94,20 @@
             (define-key js-mode-map (kbd "C-c C-j") 'nodejs-repl-send-line)
             (define-key js-mode-map (kbd "C-c C-r") 'nodejs-repl-send-region)
             (define-key js-mode-map (kbd "C-c C-c") 'nodejs-repl-send-buffer)
-            (define-key js-mode-map (kbd "C-c C-l") 'nodejs-repl-load-file)
-            (define-key js-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl)))
+            (define-key js-mode-map (kbd "C-c C-l") 'nodejs-repl-load-file)))
+
 
 (setq-hook! 'js2-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
-prettier-js-args '("--single-quote") ;; js-prettier config
+(setq-hook! 'typescript-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
+(setq prettier-js-args '("--single-quote")) ;; js-prettier config
 
 
 ;; Maximize on startup
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+
+;; (define-derived-mode genehack-vue-mode web-mode "ghVue"
+;;   "A major mode derived from web-mode, for editing .vue files with LSP support.")
+;; (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
+;; (add-hook 'genehack-vue-mode-hook #'eglot-ensure)
+;; (add-to-list 'eglot-server-programs '(genehack-vue-mode "vls"))
