@@ -59,7 +59,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-
 (setq
  ;; remap meta to command key
  mac-command-modifier 'meta
@@ -77,15 +76,14 @@
  org-link-search-must-match-exact-headline nil
 
  ;; Emacs performance
- gc-cons-threshold 200000000
- read-process-output-max (* 1024 1024) ;; 1mb
- ;; lsp-idle-delay 0.500
+ gc-cons-threshold 300000000
+ read-process-output-max (* (* 1024 1024) 2)  ;; 1mb
+ lsp-idle-delay 0.500
 
  )
 
 ;; Vue mode
 (add-hook 'vue-mode-hook #'lsp!)
-
 
 ;; ========== Javascript ==========
 (add-hook 'js-mode-hook
