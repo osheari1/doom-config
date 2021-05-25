@@ -51,3 +51,4 @@
 (package! ob-typescript)
 (package! vue-mode)
 (package! sql-indent)
+(package! org-fancy-priorities)

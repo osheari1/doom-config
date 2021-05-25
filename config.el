@@ -35,7 +35,19 @@
 (after! org
   (map! :map org-mode-map
         :n "M-j" #'org-metadown
-        :n "M-k" #'org-metaup))
+        :n "M-k" #'org-metaup)
+
+  (setq ;; org-fancy-priorities
+   org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕")
+
+   ;; Closed timestamp
+   org-log-done 'time
+
+   ;; Allow word linking
+   org-link-search-must-match-exact-headline nil
+
+   )
+  )
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -71,13 +83,12 @@
  ;; Set default projective path to Projects dir
  projectile-project-search-path `("~/Projects/")
 
-
- ;; Allow word linking
- org-link-search-must-match-exact-headline nil
+ ;; Rainbow delimiters mode
+ rainbow-delimiters-mode t
 
  ;; Emacs performance
- gc-cons-threshold 300000000
- read-process-output-max (* (* 1024 1024) 2)  ;; 1mb
+ gc-cons-threshold 400000000
+ read-process-output-max (* (* 1024 1024) 3)  ;; 1mb
  lsp-idle-delay 0.500
 
  )
