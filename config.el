@@ -37,15 +37,20 @@
         :n "M-j" #'org-metadown
         :n "M-k" #'org-metaup)
 
-  (setq ;; org-fancy-priorities
-   org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕")
-
+  (setq
    ;; Closed timestamp
    org-log-done 'time
 
    ;; Allow word linking
-   org-link-search-must-match-exact-headline nil
+   ;; org-link-search-must-match-exact-headline nil
 
+   org-priority-faces '((65 . error)
+                        (66 . warning)
+                        (67 . success))
+   ;; org-fancy-priorities
+   org-fancy-priorities-list '("■" "■" "■")
+   org-agenda-files (directory-files-recursively "~/org/" "\\.org$")
+   ;; org-agenda-files '("~/org/caracal/" "~/org/marcopolo/" "~/org/")
    )
   )
 
@@ -85,10 +90,10 @@
 
  ;; Rainbow delimiters mode
  rainbow-delimiters-mode t
-
+ ;;
  ;; Emacs performance
- gc-cons-threshold 400000000
- read-process-output-max (* (* 1024 1024) 3)  ;; 1mb
+ gc-cons-threshold 500000000
+ read-process-output-max (* (* 1024 1024) 4)  ;; 1mb
  lsp-idle-delay 0.500
 
  )
