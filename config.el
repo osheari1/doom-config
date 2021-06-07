@@ -42,7 +42,7 @@
    org-log-done 'time
 
    ;; Allow word linking
-   ;; org-link-search-must-match-exact-headline nil
+   org-link-search-must-match-exact-headline nil
 
    org-priority-faces '((65 . error)
                         (66 . warning)
@@ -114,7 +114,6 @@
 (setq-hook! 'js2-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
 (setq-hook! 'typescript-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
 (setq prettier-js-args '("--single-quote")) ;; js-prettier config
-
 
 ;; Maximize on startup
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
