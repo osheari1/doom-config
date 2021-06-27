@@ -118,6 +118,45 @@
 ;; Maximize on startup
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
+;; Font ligatures
+(plist-put! +ligatures-extra-symbols
+  ;; org
+  :name          "»"
+  :src_block     "»"
+  :src_block_end "«"
+  :quote         "“"
+  :quote_end     "”"
+  ;; Functional
+  :lambda        "λ"
+  :def           "ƒ"
+  :composition   "∘"
+  :map           "↦"
+  ;; Types
+  :null          "∅"
+  :true          "𝕋"
+  :false         "𝔽"
+  :int           "ℤ"
+  :float         "ℝ"
+  :str           "𝕊"
+  :bool          "𝔹"
+  :list          "𝕃"
+  ;; Flow
+  :not           "￢"
+  :in            "∈"
+  :not-in        "∉"
+  :and           "∧"
+  :or            "∨"
+  :for           "∀"
+  :some          "∃"
+  :return        "⟼"
+  :yield         "⟻"
+  ;; Other
+  :union         "⋃"
+  :intersect     "∩"
+  :diff          "∖"
+  :tuple         "⨂"
+  :dot           "•")  ;; you could also add your own if you want
+
 
 ;; (define-derived-mode genehack-vue-mode web-mode "ghVue"
 ;;   "A major mode derived from web-mode, for editing .vue files with LSP support.")
