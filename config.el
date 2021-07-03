@@ -113,7 +113,8 @@
 
 (setq-hook! 'js2-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
 (setq-hook! 'typescript-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
-(setq prettier-js-args '("--single-quote")) ;; js-prettier config
+(setq-hook! 'haskell-mode-hook +format-with-lsp nil)
+(setq prettier-js-args '("--single-quote" "--parser vue")) ;; js-prettier config
 
 ;; Maximize on startup
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -133,13 +134,13 @@
   :map           "↦"
   ;; Types
   :null          "∅"
-  :true          "𝕋"
-  :false         "𝔽"
+  ;; :true          "𝕋"
+  ;; :false         "𝔽"
   :int           "ℤ"
   :float         "ℝ"
-  :str           "𝕊"
-  :bool          "𝔹"
-  :list          "𝕃"
+
+  ;; :bool          "𝔹"
+  ;; :list          "𝕃"
   ;; Flow
   :not           "￢"
   :in            "∈"
@@ -156,6 +157,12 @@
   :diff          "∖"
   :tuple         "⨂"
   :dot           "•")  ;; you could also add your own if you want
+
+(plist-delete! +ligatures-extra-symbols :true)
+(plist-delete! +ligatures-extra-symbols :false)
+(plist-delete! +ligatures-extra-symbols :str)
+(plist-delete! +ligatures-extra-symbols :bool)
+(plist-delete! +ligatures-extra-symbols :list)
 
 
 ;; (define-derived-mode genehack-vue-mode web-mode "ghVue"
