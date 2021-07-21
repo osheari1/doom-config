@@ -147,8 +147,23 @@
  gc-cons-threshold 500000000
  read-process-output-max (* (* 1024 1024) 4)  ;; 1mb
  lsp-idle-delay 0.500
+
  )
 
+;; ========== World Clock ========
+(setq
+ world-clock-list '(("America/Los_Angeles" "Los Angeles")
+                    ("America/New_York" "New York")
+                    ("Europe/London" "London")
+                    ("Europe/Moscow" "Moscow")
+                    ("Asia/Tbilisi" "Tbilisi")
+                    ("Asia/Bishkek" "Bishkek")
+                    ("Asia/Vladivostok" "Vladivostok"))
+ world-clock-time-format "%A %d %B %R %z"
+ )
+
+;; TODO: Create hotkey for world click
+;; (map! :prefix "t" "c" #'world-clock)
 
 ;; ========== LSP ==========
 (setq
