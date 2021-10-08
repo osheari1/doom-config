@@ -26,8 +26,8 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-one)
-; (require 'nano-theme)
-; (setq doom-theme 'nano-theme)
+                                        ; (require 'nano-theme)
+                                        ; (setq doom-theme 'nano-theme)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -85,42 +85,42 @@
 
 ;; Font ligatures
 (plist-put! +ligatures-extra-symbols
-  ;; org
-  :name          "»"
-  :src_block     "»"
-  :src_block_end "«"
-  :quote         "“"
-  :quote_end     "”"
-  ;; Functional
-  :lambda        "λ"
-  :def           "ƒ"
-  :composition   "∘"
-  :map           "↦"
-  ;; Types
-  :null          "∅"
-  ;; :true          "𝕋"
-  ;; :false         "𝔽"
-  :int           "ℤ"
-  :float         "ℝ"
+            ;; org
+            :name          "»"
+            :src_block     "»"
+            :src_block_end "«"
+            :quote         "“"
+            :quote_end     "”"
+            ;; Functional
+            :lambda        "λ"
+            :def           "ƒ"
+            :composition   "∘"
+            :map           "↦"
+            ;; Types
+            :null          "∅"
+            ;; :true          "𝕋"
+            ;; :false         "𝔽"
+            :int           "ℤ"
+            :float         "ℝ"
 
-  ;; :bool          "𝔹"
-  ;; :list          "𝕃"
-  ;; Flow
-  :not           "￢"
-  :in            "∈"
-  :not-in        "∉"
-  :and           "∧"
-  :or            "∨"
-  :for           "∀"
-  :some          "∃"
-  :return        "⟼"
-  :yield         "⟻"
-  ;; Other
-  :union         "⋃"
-  :intersect     "∩"
-  :diff          "∖"
-  :tuple         "⨂"
-  :dot           "•")  ;; you could also add your own if you want
+            ;; :bool          "𝔹"
+            ;; :list          "𝕃"
+            ;; Flow
+            :not           "￢"
+            :in            "∈"
+            :not-in        "∉"
+            :and           "∧"
+            :or            "∨"
+            :for           "∀"
+            :some          "∃"
+            :return        "⟼"
+            :yield         "⟻"
+            ;; Other
+            :union         "⋃"
+            :intersect     "∩"
+            :diff          "∖"
+            :tuple         "⨂"
+            :dot           "•")  ;; you could also add your own if you want
 
 (plist-delete! +ligatures-extra-symbols :true)
 (plist-delete! +ligatures-extra-symbols :false)
@@ -162,8 +162,21 @@
  world-clock-time-format "%A %d %B %R %z"
  )
 
+;; TODO: create hotkey for evil-multiedit-match-all
+;; TODO: Create hotkey for avy-copy-line
+;; TODO: Create hotkey for avy-copy-region
 ;; TODO: Create hotkey for world click
 ;; (map! :prefix "t" "c" #'world-clock)
+
+;; ========== Python ==========
+
+(when (equal projectile-project-name "hb-backend-marcopolo")
+  (setq
+   lsp-pyright-venv-directory "/Users/riley/Projects/hb-backend-marcopolo/"
+   lsp-pyright-venv-path "/Users/riley/Projects/hb-backend-marcopolo/"
+   )
+  )
+
 
 ;; ========== LSP ==========
 (setq
@@ -197,7 +210,7 @@
 ;; Vue mode
 (add-hook 'vue-mode-hook #'lsp!)
 ;; (define-derived-mode genehack-vue-mode web-mode "ghVue"
-  ;; "A major mode derived from web-mode, for editing .vue files with LSP support.")
+;; "A major mode derived from web-mode, for editing .vue files with LSP support.")
 ;; (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
 ;; (add-hook 'genehack-vue-mode-hook #'eglot-ensure)
 ;; (add-to-list 'eglot-server-programs '(genehack-vue-mode "vls"))
