@@ -25,7 +25,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-nord)
                                         ; (require 'nano-theme)
                                         ; (setq doom-theme 'nano-theme)
 
@@ -98,7 +98,7 @@
             :map           "↦"
             ;; Types
             :null          "∅"
-            ;; :true          "𝕋"
+            :true          "𝕋"
             ;; :false         "𝔽"
             :int           "ℤ"
             :float         "ℝ"
@@ -120,7 +120,8 @@
             :intersect     "∩"
             :diff          "∖"
             :tuple         "⨂"
-            :dot           "•")  ;; you could also add your own if you want
+            :dot           "•"
+            )  ;; you could also add your own if you want
 
 (plist-delete! +ligatures-extra-symbols :true)
 (plist-delete! +ligatures-extra-symbols :false)
@@ -169,14 +170,8 @@
 ;; (map! :prefix "t" "c" #'world-clock)
 
 ;; ========== Python ==========
-
-(when (equal projectile-project-name "hb-backend-marcopolo")
-  (setq
-   lsp-pyright-venv-directory "/Users/riley/Projects/hb-backend-marcopolo/"
-   lsp-pyright-venv-path "/Users/riley/Projects/hb-backend-marcopolo/"
-   )
-  )
-
+;; (setq-hook! 'python-mode-hook +format-with-lsp nil) ;; Uses pylint instead of lsp formatter
+;; (setq +format-on-save-enabled-modes (nconc +format-on-save-enabled-modes ( list 'python-mode )))
 
 ;; ========== LSP ==========
 (setq
