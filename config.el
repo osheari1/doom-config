@@ -25,7 +25,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-nord)
+(setq doom-theme 'doom-tomorrow-night)
                                         ; (require 'nano-theme)
                                         ; (setq doom-theme 'nano-theme)
 
@@ -82,6 +82,7 @@
 ;; ========== Global ==========
 ;; Maximize on startup
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 
 ;; Font ligatures
 (plist-put! +ligatures-extra-symbols
@@ -149,6 +150,8 @@
  read-process-output-max (* (* 1024 1024) 4)  ;; 1mb
  lsp-idle-delay 0.500
 
+ ;; Display time
+ display-time-mode t
  )
 
 ;; ========== World Clock ========
@@ -163,15 +166,34 @@
  world-clock-time-format "%A %d %B %R %z"
  )
 
+;; TODO: create hotkey for vc-net-conflict
 ;; TODO: create hotkey for evil-multiedit-match-all
 ;; TODO: Create hotkey for avy-copy-line
 ;; TODO: Create hotkey for avy-copy-region
 ;; TODO: Create hotkey for world click
 ;; (map! :prefix "t" "c" #'world-clock)
 
+
+;; ========== Magit ==========
+;; (map! :prefix "g" "x" #'smerge-vc-next-conflict)
+
+;; ========== Debugger ==========
+(map! :leader
+      (:prefix ("d" . "debug")
+       :desc "Start" "d" #'+debugger/start
+       :desc "Start new" "D" (cmd!! #'+debugger/start t)
+       :desc "Edit temlate" "e" #'dap-debug-edit-template))
+
+
 ;; ========== Python ==========
-;; (setq-hook! 'python-mode-hook +format-with-lsp nil) ;; Uses pylint instead of lsp formatter
-;; (setq +format-on-save-enabled-modes (nconc +format-on-save-enabled-modes ( list 'python-mode )))
+(setq-hook! 'python-mode-hook +format-with-lsp nil) ;; Uses pylint instead of lsp formatter
+(setq +format-on-save-enabled-modes (nconc +format-on-save-enabled-modes ( list 'python-mode )))
+
+(use-package! dap-mode
+  :config
+  (defun dap-python--pyenv-executable-find (command)
+    (with-venv (executable-find "python")))
+  )
 
 ;; ========== LSP ==========
 (setq

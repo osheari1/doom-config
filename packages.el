@@ -53,3 +53,4 @@
 (package! sql-indent)
 (package! org-fancy-priorities)
 (package! nano-theme :recipe (:type git :host github :repo "rougier/nano-theme"))
+(package! with-venv)
