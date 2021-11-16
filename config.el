@@ -182,18 +182,46 @@
       (:prefix ("d" . "debug")
        :desc "Start" "d" #'+debugger/start
        :desc "Start new" "D" (cmd!! #'+debugger/start t)
-       :desc "Edit temlate" "e" #'dap-debug-edit-template))
+       :desc "Edit temlate" "e" #'dap-debug-edit-template
+       (:prefix ("b" . "breakpoints")
+        :desc "Add" "a" #'dap-breakpoint-add
+        :desc "Delete" "d" #'dap-breakpoint-delete
+        )))
 
+
+
+;; ========== Markdown  ==========
+(setq +format-on-save-enabled-modes (nconc +format-on-save-enabled-modes ( list 'gfm-mode )))
 
 ;; ========== Python ==========
 (setq-hook! 'python-mode-hook +format-with-lsp nil) ;; Uses pylint instead of lsp formatter
 (setq +format-on-save-enabled-modes (nconc +format-on-save-enabled-modes ( list 'python-mode )))
 
+;; TODO: make this more general
+;; This is specifically written for finding .venv directories that end in .venv3 (hb-backend)
+(defun with-venv-find-venv-dir-venv-custom ()
+  "Try to find venv dir by its name."
+  (let ((dir (locate-dominating-file default-directory
+                                     ".venv3/bin/python")))
+    (when dir
+      (setq with-venv--last-found-type ".venv3/")
+      (expand-file-name ".venv3"
+                        dir))))
+
+(setq with-venv-find-venv-dir-functions '(with-venv-find-venv-dir-venv-custom
+                                          with-venv-find-venv-dir-pipenv
+                                          with-venv-find-venv-dir-poetry
+                                          with-venv-find-venv-dir-dot-venv
+                                          with-venv-find-venv-dir-venv))
+
 (use-package! dap-mode
   :config
   (defun dap-python--pyenv-executable-find (command)
-    (with-venv (executable-find "python")))
-  )
+    ;; (message (concat "DAP-PYTHON-DEBUG: " (with-venv (executable-find "python"))))
+    (with-venv (executable-find "python"))))
+
+
+
 
 ;; ========== LSP ==========
 (setq
@@ -223,6 +251,7 @@
 (setq-hook! 'js2-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
 (setq-hook! 'typescript-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
 (setq prettier-js-args '("--single-quote" "--parser vue")) ;; js-prettier config
+(setq +format-on-save-enabled-modes (nconc +format-on-save-enabled-modes ( list 'rjsx-mode )))
 
 ;; Vue mode
 (add-hook 'vue-mode-hook #'lsp!)
