@@ -56,3 +56,4 @@
 (package! with-venv)
 (package! magit-todos)
 (package! verb)
+(package! persistent-scratch)
