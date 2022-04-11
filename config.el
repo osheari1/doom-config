@@ -103,14 +103,14 @@
             ;; Types
             :null          "∅"
             :true          "𝕋"
-            ;; :false         "𝔽"
+            :false         "𝔽"
             :int           "ℤ"
             :float         "ℝ"
 
-            ;; :bool          "𝔹"
-            ;; :list          "𝕃"
+            :bool          "𝔹"
+            :list          "𝕃"
             ;; Flow
-            :not           "￢"
+            ;; :not           "￢"
             :in            "∈"
             :not-in        "∉"
             :and           "∧"
@@ -127,11 +127,11 @@
             :dot           "•"
             )  ;; you could also add your own if you want
 
-(plist-delete! +ligatures-extra-symbols :true)
-(plist-delete! +ligatures-extra-symbols :false)
-(plist-delete! +ligatures-extra-symbols :str)
-(plist-delete! +ligatures-extra-symbols :bool)
-(plist-delete! +ligatures-extra-symbols :list)
+;; (plist-delete! +ligatures-extra-symbols :true)
+;; (plist-delete! +ligatures-extra-symbols :false)
+;; (plist-delete! +ligatures-extra-symbols :str)
+;; (plist-delete! +ligatures-extra-symbols :bool)
+;; (plist-delete! +ligatures-extra-symbols :list)
 
 (setq
  ;; remap meta to command key
@@ -143,7 +143,7 @@
  ;; Backup files by default
  make-backup-files t
  ;; Set default projective path to Projects dir
- projectile-project-search-path `("~/Projects/")
+ projectile-project-search-path `("~/Code/" "~/Code/Certik/Audits/")
 
  ;; Rainbow delimiters mode
  rainbow-delimiters-mode t
@@ -155,6 +155,17 @@
 
  ;; Display time
  display-time-mode t
+
+ pixel-scroll-precision-mode t
+
+ flycheck-solidity-solium-soliumrcfile "/home/riley/Configs/.soliumrc.json"
+ solidity-solc-path "/usr/bin/solc"
+ solidity-solium-path "/home/riley/.yarn/bin/solium"
+ solidity-flycheck-solc-checker-active nil
+ solidity-flycheck-solium-checker-active t
+ flycheck-solidity-solc-addstd-contracts t
+ solidity-flycheck-chaining-error-level t
+
  )
 
 ;; ========== World Clock ========
@@ -189,6 +200,12 @@
  :mode 'web-mode
  :i "C-<f18>" "<%=")
 
+
+;; ========== plantuml ==========
+(setq plantuml-jar-path "/home/riley/.emacs.d/.local/etc/plantuml.jar")
+(setq plantuml-default-exec-mode 'jar)
+
+
 ;; ========== magit ==========
 ;; (map! :prefix "g" "x" #'smerge-vc-next-conflict)
 (add-hook! 'magit-mode-hook #'magit-todos-mode)
@@ -208,14 +225,8 @@
 ;;                                               ("-d" "en_US")
 ;;                                               nil
 ;;                                               iso-8859-1))
-
 ;; (setq ispell-program-name "hunspell"          ; Use hunspell to correct mistakes
 ;;       ispell-dictionary   "english-hunspell") ; Default dictionary to use
-
-
-
-
-
 
 
 ;; ========== Debugger ==========
@@ -235,7 +246,6 @@
 (setq +format-on-save-enabled-modes (nconc +format-on-save-enabled-modes ( list 'gfm-mode )))
 
 ;; ========== Elixir ==========
-
 ;; (setq-hook! 'elixir-mode-hook
 ;;   lsp-language-id-configuration
 ;;   (nconc 'lsp-language-id-configuration (list '(".*\\.html\\.heex$" . "web"))))
@@ -243,24 +253,13 @@
 
 ;; ========== Python ==========
 (setq-hook! 'python-mode-hook +format-with-lsp nil) ;; Uses pylint instead of lsp formatter
-(setq +format-on-save-enabled-modes (nconc +format-on-save-enabled-modes ( list 'python-mode )))
-(map!
- :mode 'python-mode
- :leader
- (:prefix "m"
-  (:prefix ("p" . "pyvenv")
-   :desc "Activate" "a" #'pyvenv-activate )))
-
-;; TODO: make this more general
-;; This is specifically written for finding .venv directories that end in .venv3 (hb-backend)
-(defun with-venv-find-venv-dir-venv-custom ()
-  "Try to find venv dir by its name."
-  (let ((dir (locate-dominating-file default-directory
-                                     ".venv3/bin/python")))
-    (when dir
-      (setq with-venv--last-found-type ".venv3/")
-      (expand-file-name ".venv3"
-                        dir))))
+;; (setq +format-on-save-enabled-modes (nconc +format-on-save-enabled-modes ( list 'python-mode )))
+;; (map!
+;;  :mode 'python-mode
+;;  :leader
+;;  (:prefix "m"
+;;   (:prefix ("p" . "pyvenv")
+;;    :desc "Activate" "a" #'pyvenv-activate )))
 
 (setq with-venv-find-venv-dir-functions '(with-venv-find-venv-dir-venv-custom
                                           with-venv-find-venv-dir-pipenv
@@ -268,12 +267,28 @@
                                           with-venv-find-venv-dir-dot-venv
                                           with-venv-find-venv-dir-venv))
 
-(use-package! dap-mode
-  :config
-  (defun dap-python--pyenv-executable-find (command)
-    (message (concat "DAP-PYTHON-DEBUG: " (with-venv (executable-find "python"))))
-    (with-venv (executable-find "python"))))
+;; (use-package! dap-mode
+;;   :config
+;;   (defun dap-python--pyenv-executable-find (command)
+;;     (message (concat "DAP-PYTHON-DEBUG: " (with-venv (executable-find "python"))))
+;;     (with-venv (executable-find "python"))))
 
+;;   (use-package-hook! solidity-fl  ; included with solidity-mode
+;;     :pre-config
+;;     (defun get-solc-version ()
+;;       "Query solc executable and return its version.
+
+;;   The result is returned in a list with 3 elements.MAJOR MINOR PATCH.
+
+;;  If the solc output can't be parsed an error is returned."
+;;       (let ((output (shell-command-to-string (format "%s --version" solidity-solc-path))))
+;;         (if (string-match "\\(\\([[:digit:]]+\\)\.\\([[:digit:]]+\\)\.\\([[:digit:]]+\\)\\(.*\\)\\)" output)
+;;         ;; (if (string-match "Version: \\([[:digit:]]+\\)\.\\([[:digit:]]+\\)\.\\([[:digit:]]+\\)" output)
+;;             (list (match-string 2 output)
+;;                   (match-string 3 output)
+;;                   (match-string 4 output))
+;;           (error "TEST Could not parse the output of %s --version:\n %s" solidity-solc-path output))))
+;;     )
 
 
 
