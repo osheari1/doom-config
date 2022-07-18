@@ -41,7 +41,7 @@
 
   (setq
    ;; Closed timestamp
-   org-log-done 'time
+   ;; org-log-done 'time
 
    ;; Allow word linking
    org-link-search-must-match-exact-headline nil
@@ -102,15 +102,16 @@
             :map           "↦"
             ;; Types
             :null          "∅"
-            :true          "𝕋"
-            :false         "𝔽"
+            ;; :true          "𝕋"
+            :true          "true"
+            ;; :false         "𝔽"
             :int           "ℤ"
             :float         "ℝ"
 
-            :bool          "𝔹"
-            :list          "𝕃"
+            ;; :bool          "𝔹"
+            ;; :list          "𝕃"
             ;; Flow
-            ;; :not           "￢"
+            :not           "￢"
             :in            "∈"
             :not-in        "∉"
             :and           "∧"
@@ -143,7 +144,7 @@
  ;; Backup files by default
  make-backup-files t
  ;; Set default projective path to Projects dir
- projectile-project-search-path `("~/Code/" "~/Code/Certik/Audits/")
+ projectile-project-search-path `("~/Code/" "~/Code/Audits/", "~/Code/Tutorials/", "~/Code/Libs/", "~/Code/Libs/cosmwasm", "~/Code/Tests")
 
  ;; Rainbow delimiters mode
  rainbow-delimiters-mode t
@@ -158,14 +159,14 @@
 
  pixel-scroll-precision-mode t
 
- flycheck-solidity-solium-soliumrcfile "/home/riley/Configs/.soliumrc.json"
- solidity-solc-path "/usr/bin/solc"
- solidity-solium-path "/home/riley/.yarn/bin/solium"
+ flycheck-solidity-solium-soliumrcfile "/Users/riley/Configs/.soliumrc.json"
+ solidity-solc-path "/opt/homebrew/bin/solc"
+ solidity-solium-path "/opt/homebrew/bin/solium"
  solidity-flycheck-solc-checker-active nil
  solidity-flycheck-solium-checker-active t
  flycheck-solidity-solc-addstd-contracts t
  solidity-flycheck-chaining-error-level t
-
+ flycheck-checker-error-threshold 600
  )
 
 ;; ========== World Clock ========
@@ -179,6 +180,11 @@
                     ("Asia/Vladivostok" "Vladivostok"))
  world-clock-time-format "%A %d %B %R %z"
  )
+
+
+;; ========== TOML ========
+;; TODO: Setup toml lsp
+
 
 ;; TODO: create hotkey for vc-net-conflict
 ;; TODO: create hotkey for evil-multiedit-match-all
@@ -202,8 +208,11 @@
 
 
 ;; ========== plantuml ==========
-(setq plantuml-jar-path "/home/riley/.emacs.d/.local/etc/plantuml.jar")
+(setq plantuml-jar-path "/Users/riley/.emacs.d/.local/etc/plantuml.jar")
 (setq plantuml-default-exec-mode 'jar)
+
+;; ========== graphviz ==========
+(use-package! company-graphviz-dot)
 
 
 ;; ========== magit ==========
@@ -240,10 +249,41 @@
         :desc "Delete" "d" #'dap-breakpoint-delete
         )))
 
+;; (setq dap-cpptools-extension-version "1.9.8")
+
+;; (use-package! lsp-rust
+;;   :config
+;;   (require 'dap-cpptools))
+
+
+;; ========== Rust ==========
+(after! lsp-rust
+  (setq lsp-rust-analyzer-lru-capacity 200
+        lsp-rust-analyzer-server-display-inlay-hints t
+        lsp-rust-analyzer-display-chaining-hints t
+        lsp-rust-analyzer-display-reborrow-hints t
+        lsp-rust-analyzer-display-closure-return-type-hints t
+        lsp-rust-analyzer-display-parameter-hints t
+        lsp-rust-analyzer-display-lifetime-elision-hints-enable t
+        lsp-rust-analyzer-display-lifetime-elision-hints-use-parameter-names t
+        lsp-rust-analyzer-cargo-watch-enable t
+        lsp-rust-analyzer-cargo-run-build-scripts t
+        lsp-rust-analyzer-proc-macro-enable t
+        lsp-rust-analyzer-cargo-watch-command "clippy"
+        lsp-rust-analyzer-server-format-inlay-hints t
+        lsp-rust-analyzer-server-display-inlay-hints t
+        lsp-rust-analyzer-max-inlay-hint-length 20
+
+        )
+  )
+
+(setq rustic-default-test-arguments "--benches --tests --all-features -- --nocapture")
 
 
 ;; ========== Markdown  ==========
-(setq +format-on-save-enabled-modes (nconc +format-on-save-enabled-modes ( list 'gfm-mode )))
+;; (setq +format-on-save-enabled-modes (nconc +format-on-save-enabled-modes ( list 'markdown-mode )))
+(setq-hook! 'gfm-mode-hook +format-with-lsp nil) ;; Uses pylint instead of lsp formatter
+(setq markdown-command "multimarkdown")
 
 ;; ========== Elixir ==========
 ;; (setq-hook! 'elixir-mode-hook
@@ -331,5 +371,7 @@
 ;; (add-to-list 'eglot-server-programs '(genehack-vue-mode "vls"))
 
 ;; ========== Haskell ==========
-(setq-hook! 'haskell-mode-hook
-  +format-with-lsp nil)
+;; (setq-hook! 'haskell-mode-hook
+;;   +format-with-lsp nil)
+;; (setq lsp-haskell-server-path "/Users/riley/.ghcup/bin/haskell-language-server-wrapper")
+(setq haskell-process-path-ghci "stack ghci")
