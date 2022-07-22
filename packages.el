@@ -63,3 +63,4 @@
 (package! gherkin-mode)
 (package! rmsbolt)
 (package! feature-mode)
+(package! hcl-mode)
