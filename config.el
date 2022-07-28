@@ -103,7 +103,7 @@
             ;; Types
             :null          "∅"
             ;; :true          "𝕋"
-            ;; :true          "true"
+            :true          "true"
             ;; :false         "𝔽"
             :int           "ℤ"
             :float         "ℝ"
