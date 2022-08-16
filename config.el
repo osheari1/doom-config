@@ -82,6 +82,7 @@
 ;; they are implemented.
 
 
+
 ;; ========== Global ==========
 ;; Maximize on startup
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -167,6 +168,13 @@
  flycheck-solidity-solc-addstd-contracts t
  solidity-flycheck-chaining-error-level t
  flycheck-checker-error-threshold 600
+
+
+
+ ;; Auth sources
+ auth-sources '("~/.authinfo")
+
+
  )
 
 ;; ========== World Clock ========
@@ -219,6 +227,19 @@
 ;; (map! :prefix "g" "x" #'smerge-vc-next-conflict)
 (add-hook! 'magit-mode-hook #'magit-todos-mode)
 
+
+;; ========== Git  ==========
+;; (map! :prefix "g" "z" #'git-link)
+;; (map! :leader
+;;       (:prefix ("" . "debug")
+;;        :desc "Start" "d" #'+debugger/start
+;;        :desc "Start new" "D" (cmd!! #'+debugger/start t)
+;;        :desc "Edit temlate" "e" #'dap-debug-edit-template
+;;        (:prefix ("b" . "breakpoints")
+;;         :desc "Add" "a" #'dap-breakpoint-add
+;;         :desc "Delete" "d" #'dap-breakpoint-delete
+;;         )))
+
 ;; TODO: Set up spell checker
 ;; ========== ispell ==========
 ;; (setq ispell-dictionary "/Users/riley/libs/dictionaries/dictionaries/en/index.aff")
@@ -236,6 +257,7 @@
 ;;                                               iso-8859-1))
 ;; (setq ispell-program-name "hunspell"          ; Use hunspell to correct mistakes
 ;;       ispell-dictionary   "english-hunspell") ; Default dictionary to use
+
 
 
 ;; ========== Debugger ==========
@@ -280,9 +302,15 @@
 (setq rustic-default-test-arguments "--benches --tests --all-features -- --nocapture")
 
 
+
+;; ========== Tramp ==========
+(setq tramp-default-method "ssh")
+
+
 ;; ========== Markdown  ==========
 ;; (setq +format-on-save-enabled-modes (nconc +format-on-save-enabled-modes ( list 'markdown-mode )))
-(setq-hook! 'gfm-mode-hook +format-with-lsp nil) ;; Uses pylint instead of lsp formatter
+(setq-hook! 'gfm-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
+(setq-hook! 'markdown-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
 (setq markdown-command "multimarkdown")
 
 ;; ========== Elixir ==========
