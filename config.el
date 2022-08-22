@@ -226,10 +226,11 @@
 ;; ========== magit ==========
 ;; (map! :prefix "g" "x" #'smerge-vc-next-conflict)
 (add-hook! 'magit-mode-hook #'magit-todos-mode)
+;; TODO: fix git-link so it includes the commit hash. It shows up as blank currently
 
 
 ;; ========== Git  ==========
-;; (map! :prefix "g" "z" #'git-link)
+(map! :leader (:prefix "g" "z" #'git-link))
 ;; (map! :leader
 ;;       (:prefix ("" . "debug")
 ;;        :desc "Start" "d" #'+debugger/start
