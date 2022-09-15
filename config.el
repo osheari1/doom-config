@@ -32,12 +32,21 @@
 (setq doom-theme 'adwaita)
 (setq doom-theme 'doom-palenight)
 (setq doom-theme 'doom-Iosvkem)
+;; Dark
+(setq doom-theme 'doom-dark+)
+(setq doom-theme 'doom-ephemeral)
+(setq doom-theme 'doom-laserwave)
+(setq doom-theme 'doom-oceanic-next)
+
 ;; Dark high contrast
 (setq doom-theme 'misterioso)
 (setq doom-theme 'wombat)
 (setq doom-theme 'tango-dark)
+(setq doom-theme 'doom-ayu-mirage
+      doom-ayu-mirage-brighter-comments t)
 
-(setq doom-theme 'doom-moonlight)
+;; (setq doom-theme 'doom-moonlight)
+                                        ;
                                         ; (require 'nano-theme)
                                         ; (setq doom-theme 'nano-theme)
 
