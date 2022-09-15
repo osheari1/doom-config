@@ -25,6 +25,18 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
+(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-challenger-deep)
+(setq doom-theme 'doom-tomorrow-night)
+(setq doom-theme 'doom-opera)
+(setq doom-theme 'adwaita)
+(setq doom-theme 'doom-palenight)
+(setq doom-theme 'doom-Iosvkem)
+;; Dark high contrast
+(setq doom-theme 'misterioso)
+(setq doom-theme 'wombat)
+(setq doom-theme 'tango-dark)
+
 (setq doom-theme 'doom-moonlight)
                                         ; (require 'nano-theme)
                                         ; (setq doom-theme 'nano-theme)
@@ -169,7 +181,7 @@
  solidity-flycheck-chaining-error-level t
  flycheck-checker-error-threshold 600
 
-
+ display-line-numbers-type 'relative
 
  ;; Auth sources
  auth-sources '("~/.authinfo")
@@ -295,7 +307,7 @@
         lsp-rust-analyzer-cargo-watch-command "clippy"
         lsp-rust-analyzer-server-format-inlay-hints t
         lsp-rust-analyzer-server-display-inlay-hints t
-        lsp-rust-analyzer-max-inlay-hint-length 20
+        lsp-rust-analyzer-max-inlay-hint-length 10
 
         )
   )
