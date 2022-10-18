@@ -25,19 +25,6 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
-(setq doom-theme 'doom-challenger-deep)
-(setq doom-theme 'doom-tomorrow-night)
-(setq doom-theme 'doom-opera)
-(setq doom-theme 'adwaita)
-(setq doom-theme 'doom-palenight)
-(setq doom-theme 'doom-Iosvkem)
-;; Dark
-(setq doom-theme 'doom-dark+)
-(setq doom-theme 'doom-ephemeral)
-(setq doom-theme 'doom-laserwave)
-(setq doom-theme 'doom-oceanic-next)
-
 ;; Dark high contrast
 (setq doom-theme 'misterioso)
 (setq doom-theme 'wombat)
@@ -45,7 +32,23 @@
 (setq doom-theme 'doom-ayu-mirage
       doom-ayu-mirage-brighter-comments t)
 
-;; (setq doom-theme 'doom-moonlight)
+
+;; light
+(setq doom-theme 'adwaita)
+(setq doom-theme 'doom-acario-light)
+
+;; Dark
+(setq doom-theme 'doom-dark+)
+(setq doom-theme 'doom-ephemeral)
+(setq doom-theme 'doom-laserwave)
+(setq doom-theme 'doom-oceanic-next)
+(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-tomorrow-night)
+(setq doom-theme 'doom-opera)
+(setq doom-theme 'doom-Iosvkem)
+(setq doom-theme 'doom-moonlight)
+(setq doom-theme 'doom-challenger-deep)
+(setq doom-theme 'doom-palenight)
                                         ;
                                         ; (require 'nano-theme)
                                         ; (setq doom-theme 'nano-theme)
