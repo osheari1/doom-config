@@ -49,13 +49,9 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 (package! ob-typescript)
-(package! vue-mode)
 (package! sql-indent)
-(package! org-fancy-priorities)
-(package! with-venv)
 (package! magit-todos)
 (package! verb)
-(package! persistent-scratch)
 (package! ob-solidity)
 (package! mermaid-mode)
 (package! graphviz-dot-mode)
@@ -64,3 +60,12 @@
 (package! rmsbolt)
 (package! feature-mode)
 (package! hcl-mode)
+(package! org-super-agenda)
+(unpin! org-roam)
+(package! org-roam-ui)
+(package! md-roam
+  :recipe (:host github :repo "nobiot/md-roam"))
+(package! sparql-mode)
+(package! ttl-mode)
+
+;; (package! org-roam-protocol) For persisting content from web / ect.

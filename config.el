@@ -49,9 +49,6 @@
 (setq doom-theme 'doom-moonlight)
 (setq doom-theme 'doom-challenger-deep)
 (setq doom-theme 'doom-palenight)
-                                        ;
-                                        ; (require 'nano-theme)
-                                        ; (setq doom-theme 'nano-theme)
 
 ;; ========== Org ==========
 ;; If you use `org' and don't want your org files in the default location below,
@@ -83,9 +80,15 @@
 (add-hook! org-mode-hook #'verb-mode)
 
 
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+
+;; ========== Roam ==========
+(after! org-roam
+  (setq org-roam-file-extensions '("org" "md"))
+  (md-roam-mode 1) ; md-roam-mode needs to be active before org-roam-db-sync
+  (setq md-roam-file-extension "md") ; Default is "md". Specify an extension such as "markdown"
+  (org-roam-db-autosync-mode) ; autosync-mode triggers db-sync. md-roam-mode must be already active
+  )
+
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -193,11 +196,12 @@
  solidity-flycheck-chaining-error-level t
  flycheck-checker-error-threshold 600
 
+;; This determines the style of line numbers in effect. If set to `nil', line
+;; numbers are disabled. For relative line numbers, set this to `relative'.
  display-line-numbers-type 'relative
 
  ;; Auth sources
  auth-sources '("~/.authinfo")
-
 
  )
 
