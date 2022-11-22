@@ -67,5 +67,7 @@
   :recipe (:host github :repo "nobiot/md-roam"))
 (package! sparql-mode)
 (package! ttl-mode)
+(package! emacs-password-generator
+  :recipe (:host github :repo "vandrlexay/emacs-password-genarator"))
 
 ;; (package! org-roam-protocol) For persisting content from web / ect.

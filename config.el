@@ -205,6 +205,12 @@
 
  )
 
+;; ========== Projectile ==========
+(add-to-list 'projectile-globally-ignored-directories "node_modules")
+(add-to-list 'projectile-globally-ignored-directories ".venv")
+
+
+
 ;; ========== World Clock ========
 (setq
  world-clock-list '(("America/Los_Angeles" "Los Angeles")
