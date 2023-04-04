@@ -69,5 +69,7 @@
 (package! ttl-mode)
 (package! emacs-password-generator
   :recipe (:host github :repo "vandrlexay/emacs-password-genarator"))
+(package! yara-mode)
+(package! ansi-color)
 
 ;; (package! org-roam-protocol) For persisting content from web / ect.

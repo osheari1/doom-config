@@ -130,14 +130,14 @@
             :map           "↦"
             ;; Types
             :null          "∅"
-            ;; :true          "𝕋"
-            :true          "true"
-            ;; :false         "𝔽"
+            :true          "₸"
+            :false         "₣"
             :int           "ℤ"
             :float         "ℝ"
+            :str           "Ꮥ"
 
-            ;; :bool          "𝔹"
-            ;; :list          "𝕃"
+            :bool          "฿"
+            :list          "[]"
             ;; Flow
             :not           "￢"
             :in            "∈"
@@ -205,11 +205,6 @@
 
  )
 
-;; ========== Projectile ==========
-(add-to-list 'projectile-globally-ignored-directories "node_modules")
-(add-to-list 'projectile-globally-ignored-directories ".venv")
-
-
 
 ;; ========== World Clock ========
 (setq
@@ -223,6 +218,7 @@
  world-clock-time-format "%A %d %B %R %z"
  )
 
+;; ========== sh mode ========
 
 ;; ========== TOML ========
 ;; TODO: Setup toml lsp
@@ -261,7 +257,7 @@
 ;; (map! :prefix "g" "x" #'smerge-vc-next-conflict)
 (add-hook! 'magit-mode-hook #'magit-todos-mode)
 ;; TODO: fix git-link so it includes the commit hash. It shows up as blank currently
-
+(setq magit-todos-exclude-globs '(".git/" "node_modules/" ".venv/"))
 
 ;; ========== Git  ==========
 (map! :leader (:prefix "g" "z" #'git-link))
@@ -357,6 +353,7 @@
 ;; ========== Python ==========
 (setq-hook! 'python-mode-hook +format-with-lsp nil) ;; Uses pylint instead of lsp formatter
 ;; (setq +format-on-save-enabled-modes (nconc +format-on-save-enabled-modes ( list 'python-mode )))
+;;
 ;; (map!
 ;;  :mode 'python-mode
 ;;  :leader
