@@ -112,7 +112,7 @@
 
 ;; ========== Global ==========
 ;; Maximize on startup
-;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 
 ;; Font ligatures
