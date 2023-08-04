@@ -26,28 +26,28 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; Dark high contrast
-(setq doom-theme 'misterioso)
-(setq doom-theme 'wombat)
-(setq doom-theme 'tango-dark)
-(setq doom-theme 'doom-ayu-mirage
-      doom-ayu-mirage-brighter-comments t)
+;; (setq doom-theme 'misterioso)
+;; (setq doom-theme 'wombat)
+;; (setq doom-theme 'tango-dark)
+;; (setq doom-theme 'doom-ayu-mirage
+;;       doom-ayu-mirage-brighter-comments t)
 
 
-;; light
-(setq doom-theme 'adwaita)
-(setq doom-theme 'doom-acario-light)
+;; ;; light
+;; (setq doom-theme 'adwaita)
+;; (setq doom-theme 'doom-acario-light)
 
-;; Dark
-(setq doom-theme 'doom-dark+)
-(setq doom-theme 'doom-ephemeral)
-(setq doom-theme 'doom-laserwave)
-(setq doom-theme 'doom-oceanic-next)
-(setq doom-theme 'doom-one)
-(setq doom-theme 'doom-tomorrow-night)
-(setq doom-theme 'doom-opera)
-(setq doom-theme 'doom-Iosvkem)
-(setq doom-theme 'doom-moonlight)
-(setq doom-theme 'doom-challenger-deep)
+;; ;; Dark
+;; (setq doom-theme 'doom-dark+)
+;; (setq doom-theme 'doom-ephemeral)
+;; (setq doom-theme 'doom-laserwave)
+;; (setq doom-theme 'doom-oceanic-next)
+;; (setq doom-theme 'doom-one)
+;; (setq doom-theme 'doom-tomorrow-night)
+;; (setq doom-theme 'doom-opera)
+;; (setq doom-theme 'doom-Iosvkem)
+;; (setq doom-theme 'doom-moonlight)
+;; (setq doom-theme 'doom-challenger-deep)
 (setq doom-theme 'doom-palenight)
 
 ;; ========== Org ==========
@@ -82,12 +82,12 @@
 
 
 ;; ========== Roam ==========
-(after! org-roam
-  (setq org-roam-file-extensions '("org" "md"))
-  (md-roam-mode 1) ; md-roam-mode needs to be active before org-roam-db-sync
-  (setq md-roam-file-extension "md") ; Default is "md". Specify an extension such as "markdown"
-  (org-roam-db-autosync-mode) ; autosync-mode triggers db-sync. md-roam-mode must be already active
-  )
+;; (after! org-roam
+;;   (setq org-roam-file-extensions '("org" "md"))
+;;   (md-roam-mode 1) ; md-roam-mode needs to be active before org-roam-db-sync
+;;   (setq md-roam-file-extension "md") ; Default is "md". Specify an extension such as "markdown"
+;;   (org-roam-db-autosync-mode) ; autosync-mode triggers db-sync. md-roam-mode must be already active
+;;   )
 
 
 
@@ -112,49 +112,49 @@
 
 ;; ========== Global ==========
 ;; Maximize on startup
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 
 ;; Font ligatures
-(plist-put! +ligatures-extra-symbols
-            ;; org
-            :name          "»"
-            :src_block     "»"
-            :src_block_end "«"
-            :quote         "“"
-            :quote_end     "”"
-            ;; Functional
-            :lambda        "λ"
-            :def           "ƒ"
-            :composition   "∘"
-            :map           "↦"
-            ;; Types
-            :null          "∅"
-            :true          "₸"
-            :false         "₣"
-            :int           "ℤ"
-            :float         "ℝ"
-            :str           "Ꮥ"
+;; (plist-put! +ligatures-extra-symbols
+;;             ;; org
+;;             :name          "»"
+;;             :src_block     "»"
+;;             :src_block_end "«"
+;;             :quote         "“"
+;;             :quote_end     "”"
+;;             ;; Functional
+;;             :lambda        "λ"
+;;             :def           "ƒ"
+;;             :composition   "∘"
+;;             :map           "↦"
+;;             ;; Types
+;;             :null          "∅"
+;;             :true          "₸"
+;;             :false         "₣"
+;;             :int           "ℤ"
+;;             :float         "ℝ"
+;;             :str           "Ꮥ"
 
-            :bool          "฿"
-            :list          "[]"
-            ;; Flow
-            :not           "￢"
-            :in            "∈"
-            :not-in        "∉"
-            :and           "∧"
-            :or            "∨"
-            :for           "∀"
-            :some          "∃"
-            :return        "⟼"
-            :yield         "⟻"
-            ;; Other
-            :union         "⋃"
-            :intersect     "∩"
-            :diff          "∖"
-            :tuple         "⨂"
-            :dot           "•"
-            )  ;; you could also add your own if you want
+;;             :bool          "฿"
+;;             :list          "[]"
+;;             ;; Flow
+;;             :not           "￢"
+;;             :in            "∈"
+;;             :not-in        "∉"
+;;             :and           "∧"
+;;             :or            "∨"
+;;             :for           "∀"
+;;             :some          "∃"
+;;             :return        "⟼"
+;;             :yield         "⟻"
+;;             ;; Other
+;;             :union         "⋃"
+;;             :intersect     "∩"
+;;             :diff          "∖"
+;;             :tuple         "⨂"
+;;             :dot           "•"
+;;             )  ;; you could also add your own if you want
 
 ;; (plist-delete! +ligatures-extra-symbols :true)
 ;; (plist-delete! +ligatures-extra-symbols :false)
@@ -163,8 +163,6 @@
 ;; (plist-delete! +ligatures-extra-symbols :list)
 
 (setq
- ;; remap meta to command key
- mac-command-modifier 'meta
  ;; Doom disables auto-save
  auto-save-default t
  ;; Disable quit prompt
@@ -172,29 +170,30 @@
  ;; Backup files by default
  make-backup-files t
  ;; Set default projective path to Projects dir
- projectile-project-search-path `("~/Code/" "~/Code/Audits/", "~/Code/Tutorials/", "~/Code/Libs/", "~/Code/Libs/cosmwasm", "~/Code/Tests")
+ ;; projectile-project-search-path `("~/Code/" "~/Code/Audits/", "~/Code/Tutorials/", "~/Code/Libs/", "~/Code/Libs/cosmwasm", "~/Code/Tests")
 
  ;; Rainbow delimiters mode
  rainbow-delimiters-mode t
 
  ;; Emacs performance
- gc-cons-threshold 500000000
- read-process-output-max (* (* 1024 1024) 4)  ;; 1mb
- lsp-idle-delay 0.500
+ ;; gc-cons-threshold 500000000
+ ;; read-process-output-max (* (* 1024 1024) 4)  ;; 1mb
+ ;; lsp-idle-delay 0.500
 
  ;; Display time
  display-time-mode t
 
  pixel-scroll-precision-mode t
 
- flycheck-solidity-solium-soliumrcfile "/Users/riley/Configs/.soliumrc.json"
- solidity-solc-path "/opt/homebrew/bin/solc"
- solidity-solium-path "/opt/homebrew/bin/solium"
- solidity-flycheck-solc-checker-active nil
- solidity-flycheck-solium-checker-active t
- flycheck-solidity-solc-addstd-contracts t
- solidity-flycheck-chaining-error-level t
- flycheck-checker-error-threshold 600
+ ;; flycheck-solidity-solium-soliumrcfile "/Users/riley/Configs/.soliumrc.json"
+ ;; solidity-solc-path "/opt/homebrew/bin/solc"
+ ;; solidity-solium-path "/opt/homebrew/bin/solium"
+ ;; solidity-flycheck-solc-checker-active nil
+ ;; solidity-flycheck-solium-checker-active t
+ ;; flycheck-solidity-solc-addstd-contracts t
+ ;; solidity-flycheck-chaining-error-level t
+
+ ;; flycheck-checker-error-threshold 600
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -207,16 +206,16 @@
 
 
 ;; ========== World Clock ========
-(setq
- world-clock-list '(("America/Los_Angeles" "Los Angeles")
-                    ("America/New_York" "New York")
-                    ("Europe/London" "London")
-                    ("Europe/Moscow" "Moscow")
-                    ("Asia/Tbilisi" "Tbilisi")
-                    ("Asia/Bishkek" "Bishkek")
-                    ("Asia/Vladivostok" "Vladivostok"))
- world-clock-time-format "%A %d %B %R %z"
- )
+;; (setq
+;;  world-clock-list '(("America/Los_Angeles" "Los Angeles")
+;;                     ("America/New_York" "New York")
+;;                     ("Europe/London" "London")
+;;                     ("Europe/Moscow" "Moscow")
+;;                     ("Asia/Tbilisi" "Tbilisi")
+;;                     ("Asia/Bishkek" "Bishkek")
+;;                     ("Asia/Vladivostok" "Vladivostok"))
+;;  world-clock-time-format "%A %d %B %R %z"
+;;  )
 
 ;; ========== sh mode ========
 
@@ -233,24 +232,24 @@
 
 ;; TODO: Figure out how to create key macros
 ;; ========== Custom Keys ==========
-(map!
- :mode 'elixir-mode
- :i "C-<f16>" "->"
- :i "C-<f17>" "=>"
- :i "C-<f18>" "<%="
- :i "C-<f19>" "|>")
+;; (map!
+;;  :mode 'elixir-mode
+;;  :i "C-<f16>" "->"
+;;  :i "C-<f17>" "=>"
+;;  :i "C-<f18>" "<%="
+;;  :i "C-<f19>" "|>")
 
-(map!
- :mode 'web-mode
- :i "C-<f18>" "<%=")
+;; (map!
+;;  :mode 'web-mode
+;;  :i "C-<f18>" "<%=")
 
 
 ;; ========== plantuml ==========
-(setq plantuml-jar-path "/Users/riley/.emacs.d/.local/etc/plantuml.jar")
-(setq plantuml-default-exec-mode 'jar)
+;; (setq plantuml-jar-path "/Users/riley/.emacs.d/.local/etc/plantuml.jar")
+;; (setq plantuml-default-exec-mode 'jar)
 
 ;; ========== graphviz ==========
-(use-package! company-graphviz-dot)
+;; (use-package! company-graphviz-dot)
 
 
 ;; ========== magit ==========
@@ -292,15 +291,15 @@
 
 
 ;; ========== Debugger ==========
-(map! :leader
-      (:prefix ("d" . "debug")
-       :desc "Start" "d" #'+debugger/start
-       :desc "Start new" "D" (cmd!! #'+debugger/start t)
-       :desc "Edit temlate" "e" #'dap-debug-edit-template
-       (:prefix ("b" . "breakpoints")
-        :desc "Add" "a" #'dap-breakpoint-add
-        :desc "Delete" "d" #'dap-breakpoint-delete
-        )))
+;; (map! :leader
+;;       (:prefix ("d" . "debug")
+;;        :desc "Start" "d" #'+debugger/start
+;;        :desc "Start new" "D" (cmd!! #'+debugger/start t)
+;;        :desc "Edit temlate" "e" #'dap-debug-edit-template
+;;        (:prefix ("b" . "breakpoints")
+;;         :desc "Add" "a" #'dap-breakpoint-add
+;;         :desc "Delete" "d" #'dap-breakpoint-delete
+;;         )))
 
 ;; (setq dap-cpptools-extension-version "1.9.8")
 
@@ -335,14 +334,14 @@
 
 
 ;; ========== Tramp ==========
-(setq tramp-default-method "ssh")
+;; (setq tramp-default-method "ssh")
 
 
 ;; ========== Markdown  ==========
 ;; (setq +format-on-save-enabled-modes (nconc +format-on-save-enabled-modes ( list 'markdown-mode )))
-(setq-hook! 'gfm-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
-(setq-hook! 'markdown-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
-(setq markdown-command "multimarkdown")
+;; (setq-hook! 'gfm-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
+;; (setq-hook! 'markdown-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
+;; (setq markdown-command "multimarkdown")
 
 ;; ========== Elixir ==========
 ;; (setq-hook! 'elixir-mode-hook
@@ -351,7 +350,7 @@
 
 
 ;; ========== Python ==========
-(setq-hook! 'python-mode-hook +format-with-lsp nil) ;; Uses pylint instead of lsp formatter
+;; (setq-hook! 'python-mode-hook +format-with-lsp nil) ;; Uses pylint instead of lsp formatter
 ;; (setq +format-on-save-enabled-modes (nconc +format-on-save-enabled-modes ( list 'python-mode )))
 ;;
 ;; (map!
@@ -361,11 +360,11 @@
 ;;   (:prefix ("p" . "pyvenv")
 ;;    :desc "Activate" "a" #'pyvenv-activate )))
 
-(setq with-venv-find-venv-dir-functions '(with-venv-find-venv-dir-venv-custom
-                                          with-venv-find-venv-dir-pipenv
-                                          with-venv-find-venv-dir-poetry
-                                          with-venv-find-venv-dir-dot-venv
-                                          with-venv-find-venv-dir-venv))
+;; (setq with-venv-find-venv-dir-functions '(with-venv-find-venv-dir-venv-custom
+;;                                           with-venv-find-venv-dir-pipenv
+;;                                           with-venv-find-venv-dir-poetry
+;;                                           with-venv-find-venv-dir-dot-venv
+;;                                           with-venv-find-venv-dir-venv))
 
 ;; (use-package! dap-mode
 ;;   :config
@@ -397,33 +396,33 @@
  lsp-headerline-breadcrumb-enable t
  lsp-lens-enable t)
 
-(map! :map lsp-command-map
-      "m i" #'lsp-ui-imenu
-      "m r" #'lsp-ui-imenu--refresh)
+;; (map! :map lsp-command-map
+;;       "m i" #'lsp-ui-imenu
+;;       "m r" #'lsp-ui-imenu--refresh)
 
 
 
 
 
 ;; ========== Javascript ==========
-(add-hook 'js-mode-hook
-          (lambda ()
-            (define-key js-mode-map (kbd "C-x C-e") 'nodejs-repl-send-last-expression)
-            (define-key js-mode-map (kbd "C-c C-j") 'nodejs-repl-send-line)
-            (define-key js-mode-map (kbd "C-c C-r") 'nodejs-repl-send-region)
-            (define-key js-mode-map (kbd "C-c C-c") 'nodejs-repl-send-buffer)
-            (define-key js-mode-map (kbd "C-c C-l") 'nodejs-repl-load-file)))
+;; (add-hook 'js-mode-hook
+;;           (lambda ()
+;;             (define-key js-mode-map (kbd "C-x C-e") 'nodejs-repl-send-last-expression)
+;;             (define-key js-mode-map (kbd "C-c C-j") 'nodejs-repl-send-line)
+;;             (define-key js-mode-map (kbd "C-c C-r") 'nodejs-repl-send-region)
+;;             (define-key js-mode-map (kbd "C-c C-c") 'nodejs-repl-send-buffer)
+;;             (define-key js-mode-map (kbd "C-c C-l") 'nodejs-repl-load-file)))
 
 
-(setq-hook! 'js-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
-(setq-hook! 'vue-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
-(setq-hook! 'js2-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
-(setq-hook! 'typescript-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
-(setq prettier-js-args '("--single-quote" "--parser vue")) ;; js-prettier config
-(setq +format-on-save-enabled-modes (nconc +format-on-save-enabled-modes ( list 'rjsx-mode )))
+;; (setq-hook! 'js-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
+;; (setq-hook! 'vue-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
+;; (setq-hook! 'js2-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
+;; (setq-hook! 'typescript-mode-hook +format-with-lsp nil) ;; Uses prettier instead of lsp formatter
+;; (setq prettier-js-args '("--single-quote" "--parser vue")) ;; js-prettier config
+;; (setq +format-on-save-enabled-modes (nconc +format-on-save-enabled-modes ( list 'rjsx-mode )))
 
 ;; Vue mode
-(add-hook 'vue-mode-hook #'lsp!)
+;; (add-hook 'vue-mode-hook #'lsp!)
 ;; (define-derived-mode genehack-vue-mode web-mode "ghVue"
 ;; "A major mode derived from web-mode, for editing .vue files with LSP support.")
 ;; (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
@@ -434,4 +433,4 @@
 ;; (setq-hook! 'haskell-mode-hook
 ;;   +format-with-lsp nil)
 ;; (setq lsp-haskell-server-path "/Users/riley/.ghcup/bin/haskell-language-server-wrapper")
-(setq haskell-process-path-ghci "stack ghci")
+;; (setq haskell-process-path-ghci "stack ghci")
