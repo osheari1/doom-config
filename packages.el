@@ -65,10 +65,15 @@
 ;; (package! org-roam-ui)
 ;; (package! md-roam
 ;;   :recipe (:host github :repo "nobiot/md-roam"))
+;; (package! org-roam-protocol) For persisting content from web / ect.
 ;; (package! sparql-mode)
 ;; (package! ttl-mode)
 (package! emacs-password-generator
   :recipe (:host github :repo "vandrlexay/emacs-password-genarator"))
 (package! ansi-color)
-
-;; (package! org-roam-protocol) For persisting content from web / ect.
+(package! edi-mode
+  :recipe (:local-repo "repos/edi-mode"))  ; looks for ~/.doom.d/my/package/my-package.el
+(package! x12-mode
+  :recipe (:host github :repo "clarkema/x12-mode"))
+(package! gptel)
+(package! auth-source)

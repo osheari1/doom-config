@@ -42,43 +42,19 @@
 ;; (setq doom-theme 'doom-ephemeral)
 ;; (setq doom-theme 'doom-laserwave)
 ;; (setq doom-theme 'doom-oceanic-next)
-;; (setq doom-theme 'doom-one)
+(setq doom-theme 'doom-one)
 ;; (setq doom-theme 'doom-tomorrow-night)
 ;; (setq doom-theme 'doom-opera)
 ;; (setq doom-theme 'doom-Iosvkem)
 ;; (setq doom-theme 'doom-moonlight)
 ;; (setq doom-theme 'doom-challenger-deep)
-(setq doom-theme 'doom-palenight)
+;; (setq doom-theme 'doom-palenight)
 
-;; ========== Org ==========
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
-(add-hook! 'org-mode-hook #'+org-pretty-mode)
-(after! org
-  (map! :map org-mode-map
-        :n "M-j" #'org-metadown
-        :n "M-k" #'org-metaup)
 
-  (setq
-   ;; Closed timestamp
-   ;; org-log-done 'time
 
-   ;; Allow word linking
-   org-link-search-must-match-exact-headline nil
 
-   org-priority-faces '((65 . error)
-                        (66 . warning)
-                        (67 . success))
-   ;; org-fancy-priorities
-   org-fancy-priorities-list '("■" "■" "■")
-   org-agenda-files (directory-files-recursively "~/org/" "\\.org$")
-   ;; org-agenda-files '("~/org/caracal/" "~/org/marcopolo/" "~/org/")
-   )
-  )
-
+;; ========== Verb ==========
 (add-hook! org-mode-hook #'verb-mode)
-
 
 
 ;; ========== Roam ==========
@@ -112,7 +88,7 @@
 
 ;; ========== Global ==========
 ;; Maximize on startup
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 
 ;; Font ligatures
@@ -171,6 +147,7 @@
  make-backup-files t
  ;; Set default projective path to Projects dir
  ;; projectile-project-search-path `("~/Code/" "~/Code/Audits/", "~/Code/Tutorials/", "~/Code/Libs/", "~/Code/Libs/cosmwasm", "~/Code/Tests")
+ projectile-project-search-path `("~/study/scala" "~/study/rust")
 
  ;; Rainbow delimiters mode
  rainbow-delimiters-mode t
@@ -181,7 +158,9 @@
  ;; lsp-idle-delay 0.500
 
  ;; Display time
- display-time-mode t
+ ;; display-time-mode t
+
+ debug-on-quit t
 
  pixel-scroll-precision-mode t
 
@@ -195,8 +174,8 @@
 
  ;; flycheck-checker-error-threshold 600
 
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
+ ;; This determines the style of line numbers in effect. If set to `nil', line
+ ;; numbers are disabled. For relative line numbers, set this to `relative'.
  display-line-numbers-type 'relative
 
  ;; Auth sources
@@ -245,8 +224,10 @@
 
 
 ;; ========== plantuml ==========
-;; (setq plantuml-jar-path "/Users/riley/.emacs.d/.local/etc/plantuml.jar")
-;; (setq plantuml-default-exec-mode 'jar)
+;; /home/r/.emacs.d/.local/etc
+
+(setq plantuml-jar-path "/home/r/.emacs.d/.local/etc/plantuml.jar")
+(setq plantuml-default-exec-mode 'jar)
 
 ;; ========== graphviz ==========
 ;; (use-package! company-graphviz-dot)
@@ -324,12 +305,15 @@
         lsp-rust-analyzer-cargo-watch-command "clippy"
         lsp-rust-analyzer-server-format-inlay-hints t
         lsp-rust-analyzer-server-display-inlay-hints t
-        lsp-rust-analyzer-max-inlay-hint-length 10
+        lsp-rust-analyzer-max-inlay-hint-length 80
 
         )
   )
 
 (setq rustic-default-test-arguments "--benches --tests --all-features -- --nocapture")
+
+
+
 
 
 
@@ -353,6 +337,7 @@
 ;; (setq-hook! 'python-mode-hook +format-with-lsp nil) ;; Uses pylint instead of lsp formatter
 ;; (setq +format-on-save-enabled-modes (nconc +format-on-save-enabled-modes ( list 'python-mode )))
 ;;
+
 ;; (map!
 ;;  :mode 'python-mode
 ;;  :leader
@@ -366,6 +351,7 @@
 ;;                                           with-venv-find-venv-dir-dot-venv
 ;;                                           with-venv-find-venv-dir-venv))
 
+;; ========== DAP Mode ==========
 ;; (use-package! dap-mode
 ;;   :config
 ;;   (defun dap-python--pyenv-executable-find (command)
@@ -394,7 +380,22 @@
 ;; ========== LSP ==========
 (setq
  lsp-headerline-breadcrumb-enable t
- lsp-lens-enable t)
+ lsp-lens-enable t
+ ;; lsp-file-watch-ignored-directories (add-to-list 'lsp-file-watch-ignored-directories "/home/r/.rustup\\'")
+ ;; lsp-file-watch-ignored-directories (add-to-list 'lsp-file-watch-ignored-directories "/home/r/.jenv\\'")
+ ;; lsp-file-watch-ignored-directories '(add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.rustup\\'")
+ ;; lsp-file-watch-ignored-directories '(add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.jenv\\'")
+ )
+(after! lsp-mode
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.rustup\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.jenv\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.config\\'")
+  ;; (add-to-list 'lsp-file-watch-ignored-files "[/\\\\]\\.my-files\\'")
+
+  )
+
+
+
 
 ;; (map! :map lsp-command-map
 ;;       "m i" #'lsp-ui-imenu
@@ -434,3 +435,75 @@
 ;;   +format-with-lsp nil)
 ;; (setq lsp-haskell-server-path "/Users/riley/.ghcup/bin/haskell-language-server-wrapper")
 ;; (setq haskell-process-path-ghci "stack ghci")
+
+
+;; ========== edi-mode ==========
+(use-package! edi-mode :load-path "repos/edi-mode")
+(add-to-list 'auto-mode-alist '("\\.edi" . edi-mode))
+
+;; ========== x12-mode ==========
+;; (autoload x 'x12-mode "x12-mode" "" t)
+(use-package! x12-mode)
+;; Add more file extensions as required
+(add-to-list 'auto-mode-alist '("\\.x12\\'" . x12-mode))
+
+
+
+;; ========== authinfo ==========
+(defun get-authinfo-entry (machine)
+  "Retrieve a particular entry from the .authinfo file."
+  (let* ((auth-sources '((:source "~/.authinfo" :host t)))
+         (auth-source-result
+          (car (auth-source-search :host machine))))
+    (if auth-source-result
+        (let ((secret (plist-get auth-source-result :secret)))
+          (if secret
+              (funcall secret)
+            (error "No secret found for machine %s" machine)))
+      (error "Entry not found for machine %s" machine))))
+
+
+;; ========== gptel ==========
+(use-package! gptel
+  :config
+  (setq! gptel-api-key (get-authinfo-entry "api.openai.com")))
+
+
+(map! :leader
+      :desc "gptel"
+      :prefix ("l" . "gpt")
+      :nv "s" #'gptel-send
+      :nv "m" #'gptel-menu)
+
+(setq gptel-default-mode 'org-mode)
+
+
+
+;; ========== Org ==========
+;; If you use `org' and don't want your org files in the default location below,
+;; change `org-directory'. It must be set before org loads!
+(setq org-directory "~/org/")
+(add-hook! 'org-mode-hook #'+org-pretty-mode)
+(after! org
+  (map! :map org-mode-map
+        :n "M-j" #'org-metadown
+        :n "M-k" #'org-metaup)
+
+  (setq
+   ;; Closed timestamp
+   ;; org-log-done 'time
+
+   ;; Allow word linking
+   org-link-search-must-match-exact-headline nil
+
+   org-priority-faces '((65 . error)
+                        (66 . warning)
+                        (67 . success))
+   org-todo-keywords '((sequence "BACKLOG(b)"
+                        "TODO(t)" "STRT(s!)" "WAIT(w@!)" "HOLD(h@!)" "KILL(k@)" "BLOCKED(B@!)" "DONE(d@!)" "PROJ(p)"))
+   ;; org-fancy-priorities
+   ;; org-fancy-priorities-list '("■" "" "■")
+   org-agenda-files (directory-files-recursively "~/org/" "\\.org$")
+   ;; org-agenda-files '("~/org/caracal/" "~/org/marcopolo/" "~/org/")
+   )
+  )
