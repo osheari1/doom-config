@@ -92,45 +92,45 @@
 
 
 ;; Font ligatures
-;; (plist-put! +ligatures-extra-symbols
-;;             ;; org
-;;             :name          "»"
-;;             :src_block     "»"
-;;             :src_block_end "«"
-;;             :quote         "“"
-;;             :quote_end     "”"
-;;             ;; Functional
-;;             :lambda        "λ"
-;;             :def           "ƒ"
-;;             :composition   "∘"
-;;             :map           "↦"
-;;             ;; Types
-;;             :null          "∅"
-;;             :true          "₸"
-;;             :false         "₣"
-;;             :int           "ℤ"
-;;             :float         "ℝ"
-;;             :str           "Ꮥ"
+(plist-put! +ligatures-extra-symbols
+            ;; org
+            :name          "»"
+            :src_block     "»"
+            :src_block_end "«"
+            :quote         "“"
+            :quote_end     "”"
+            ;; Functional
+            :lambda        "λ"
+            :def           "ƒ"
+            :composition   "∘"
+            :map           "↦"
+            ;; Types
+            :null          "∅"
+            :true          "₸"
+            :false         "₣"
+            :int           "ℤ"
+            :float         "ℝ"
+            :str           "Ꮥ"
 
-;;             :bool          "฿"
-;;             :list          "[]"
-;;             ;; Flow
-;;             :not           "￢"
-;;             :in            "∈"
-;;             :not-in        "∉"
-;;             :and           "∧"
-;;             :or            "∨"
-;;             :for           "∀"
-;;             :some          "∃"
-;;             :return        "⟼"
-;;             :yield         "⟻"
-;;             ;; Other
-;;             :union         "⋃"
-;;             :intersect     "∩"
-;;             :diff          "∖"
-;;             :tuple         "⨂"
-;;             :dot           "•"
-;;             )  ;; you could also add your own if you want
+            :bool          "฿"
+            :list          "[]"
+            ;; Flow
+            :not           "￢"
+            :in            "∈"
+            :not-in        "∉"
+            :and           "∧"
+            :or            "∨"
+            :for           "∀"
+            :some          "∃"
+            :return        "⟼"
+            :yield         "⟻"
+            ;; Other
+            :union         "⋃"
+            :intersect     "∩"
+            :diff          "∖"
+            :tuple         "⨂"
+            :dot           "•"
+            )  ;; you could also add your own if you want
 
 ;; (plist-delete! +ligatures-extra-symbols :true)
 ;; (plist-delete! +ligatures-extra-symbols :false)
@@ -390,8 +390,6 @@
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.rustup\\'")
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.jenv\\'")
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.config\\'")
-  ;; (add-to-list 'lsp-file-watch-ignored-files "[/\\\\]\\.my-files\\'")
-
   )
 
 
