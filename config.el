@@ -505,3 +505,7 @@
    ;; org-agenda-files '("~/org/caracal/" "~/org/marcopolo/" "~/org/")
    )
   )
+
+
+;; ========== Treemacs ==========
+(setq +treemacs-git-mode 'deferred)
