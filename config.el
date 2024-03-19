@@ -49,7 +49,7 @@
 ;; (setq doom-theme 'doom-moonlight)
 ;; (setq doom-theme 'doom-challenger-deep)
 ;; (setq doom-theme 'doom-palenight)
-
+;; (setq doom-unicode-font "Noto Color Emoji")
 
 
 
@@ -380,12 +380,7 @@
 ;; ========== LSP ==========
 (setq
  lsp-headerline-breadcrumb-enable t
- lsp-lens-enable t
- ;; lsp-file-watch-ignored-directories (add-to-list 'lsp-file-watch-ignored-directories "/home/r/.rustup\\'")
- ;; lsp-file-watch-ignored-directories (add-to-list 'lsp-file-watch-ignored-directories "/home/r/.jenv\\'")
- ;; lsp-file-watch-ignored-directories '(add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.rustup\\'")
- ;; lsp-file-watch-ignored-directories '(add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.jenv\\'")
- )
+ lsp-lens-enable t)
 (after! lsp-mode
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.rustup\\'")
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.jenv\\'")
@@ -393,11 +388,11 @@
   )
 
 
+(map! :map lsp-command-map
+      "m i" #'lsp-ui-imenu
+      "m r" #'lsp-ui-imenu--refresh)
 
 
-;; (map! :map lsp-command-map
-;;       "m i" #'lsp-ui-imenu
-;;       "m r" #'lsp-ui-imenu--refresh)
 
 
 
@@ -466,6 +461,14 @@
   :config
   (setq! gptel-api-key (get-authinfo-entry "api.openai.com")))
 
+(setq gptel-directives
+      '((default . "You are a large language model living in Emacs and a helpful assistant. Respond concisely.")
+      (programming . "You are a large language model and a careful programmer. Provide code and only code as output without any additional text, prompt or note.")
+      (writing . "You are a large language model and a writing assistant. Respond concisely.")
+      (chat . "You are a large language model and a conversation partner. Respond concisely.")
+      (arch . "Act as an Arch Linux expert.")
+      (emacs . "Act as an emacs expert. Respond half concisely")))
+
 
 (map! :leader
       :desc "gptel"
@@ -481,7 +484,20 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
-(add-hook! 'org-mode-hook #'+org-pretty-mode)
+;; (add-hook! 'org-mode-hook #'+org-pretty-mode)
+
+;; org-fancy-priorities
+;; (setq org-fancy-priorities-list '("❗" "⬆" "⬇" "☕"))
+(after! org-fancy-priorities
+  (setq
+   org-fancy-priorities-list '("🟥" "🟨" "🟩")
+   org-priority-faces
+   '((?A :foreground "red" :weight bold)
+     (?B :foreground "green" :weight bold)
+     (?C :foreground "grey" :weight bold))
+   ))
+(add-hook 'org-agenda-mode-hook 'org-fancy-priorities-mode)
+
 (after! org
   (map! :map org-mode-map
         :n "M-j" #'org-metadown
@@ -494,13 +510,12 @@
    ;; Allow word linking
    org-link-search-must-match-exact-headline nil
 
-   org-priority-faces '((65 . error)
-                        (66 . warning)
-                        (67 . success))
+   ;; org-priority-faces '((65 . error)
+   ;;                      (66 . warning)
+   ;;                      (67 . success))
    org-todo-keywords '((sequence "BACKLOG(b)"
                         "TODO(t)" "STRT(s!)" "WAIT(w@!)" "HOLD(h@!)" "KILL(k@)" "BLOCKED(B@!)" "DONE(d@!)" "PROJ(p)"))
-   ;; org-fancy-priorities
-   ;; org-fancy-priorities-list '("■" "" "■")
+
    org-agenda-files (directory-files-recursively "~/org/" "\\.org$")
    ;; org-agenda-files '("~/org/caracal/" "~/org/marcopolo/" "~/org/")
    )
