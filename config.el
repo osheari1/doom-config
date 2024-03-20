@@ -514,7 +514,15 @@
    ;;                      (66 . warning)
    ;;                      (67 . success))
    org-todo-keywords '((sequence "BACKLOG(b)"
-                        "TODO(t)" "STRT(s!)" "WAIT(w@!)" "HOLD(h@!)" "KILL(k@)" "BLOCKED(B@!)" "DONE(d@!)" "PROJ(p)"))
+                        "TODO(t)"
+                        "STRT(s!)"
+                        "WAIT(w@)"
+                        "HOLD(h@)"
+                        "KILL(k@)"
+                        "BLOCKED(B@)"
+                        "DONE(d@)"
+                        "PROJ(p)"))
+   org-todo-keyword-faces
 
    org-agenda-files (directory-files-recursively "~/org/" "\\.org$")
    ;; org-agenda-files '("~/org/caracal/" "~/org/marcopolo/" "~/org/")
