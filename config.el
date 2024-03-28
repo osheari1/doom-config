@@ -377,6 +377,10 @@
 
 
 
+
+;; ========== nXML ==========
+(add-hook 'nxml-mode-hook #'lsp)
+
 ;; ========== LSP ==========
 (setq
  lsp-headerline-breadcrumb-enable t
@@ -463,11 +467,11 @@
 
 (setq gptel-directives
       '((default . "You are a large language model living in Emacs and a helpful assistant. Respond concisely.")
-      (programming . "You are a large language model and a careful programmer. Provide code and only code as output without any additional text, prompt or note.")
-      (writing . "You are a large language model and a writing assistant. Respond concisely.")
-      (chat . "You are a large language model and a conversation partner. Respond concisely.")
-      (arch . "Act as an Arch Linux expert.")
-      (emacs . "Act as an emacs expert. Respond half concisely")))
+        (programming . "You are a large language model and a careful programmer. Provide code and only code as output without any additional text, prompt or note.")
+        (writing . "You are a large language model and a writing assistant. Respond concisely.")
+        (chat . "You are a large language model and a conversation partner. Respond concisely.")
+        (arch . "Act as an Arch Linux expert.")
+        (emacs . "Act as an emacs expert. Respond half concisely. Where examples would support the answer, please add them.")))
 
 
 (map! :leader
@@ -522,7 +526,16 @@
                         "BLOCKED(B@)"
                         "DONE(d@)"
                         "PROJ(p)"))
-   org-todo-keyword-faces
+
+   org-todo-keyword-faces '(
+                            ("BACKLOG" . (:foreground "dark gray" :weight bold :underline f))
+                            ("TODO" . (:foreground "light blue" :weight bold :underline f))
+                            ("STRT" . +org-todo-active)
+                            ("WAIT" . +org-todo-onhold)
+                            ("BLOCKED" . +org-todo-onhold)
+                            ("HOLD" . +org-todo-onhold)
+                            ("PROJ" . +org-todo-project)
+                            ("KILL" . +org-todo-cancel))  ;; org-todo-keyword-faces
 
    org-agenda-files (directory-files-recursively "~/org/" "\\.org$")
    ;; org-agenda-files '("~/org/caracal/" "~/org/marcopolo/" "~/org/")
