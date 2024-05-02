@@ -471,7 +471,12 @@
         (writing . "You are a large language model and a writing assistant. Respond concisely.")
         (chat . "You are a large language model and a conversation partner. Respond concisely.")
         (arch . "Act as an Arch Linux expert.")
-        (emacs . "Act as an emacs expert. Respond half concisely. Where examples would support the answer, please add them.")))
+        (emacs . "Act as an emacs expert. Respond half concisely. Where examples would support the answer, please add them.")
+        (stock-trading . "Act as a stock trading expert. Where examples or images would support the answer, please add them.")
+        (crypto-trading . "Act as a crypto trading expert. Where examples or images would support the answer, please add them.")
+        (forex-trading . "Act as a forex trading expert. Where examples or images would support the answer, please add them.")
+        (options-trading . "Act as a options trading expert. Where examples or images would support the answer, please add them.")
+        ))
 
 
 (map! :leader

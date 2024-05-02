@@ -17,8 +17,8 @@
      "[/\\\\]coverage\\'" "[/\\\\]quasar\\'"))
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(org-agenda-files
-   '("/home/r/org/r/credit-cards-0apr.org" "/home/r/org/r/r.org"
-     "/home/r/org/caracal/meetings/india.org"
+   '("~/org/trading/indicators.org" "/home/r/org/r/credit-cards-0apr.org"
+     "/home/r/org/r/r.org" "/home/r/org/caracal/meetings/india.org"
      "/home/r/org/caracal/meetings/sales_strategy.org"
      "/home/r/org/caracal/omp/kitting-specs.org"
      "/home/r/org/caracal/omp/meetings.org" "/home/r/org/caracal/omp/omp.org"
@@ -26,8 +26,7 @@
      "/home/r/org/caracal/biz_cards.org" "/home/r/org/caracal/don.org"
      "/home/r/org/caracal/expenses.org" "/home/r/org/caracal/mulesoft.org"
      "/home/r/org/caracal/rpa.org" "/home/r/org/code/learning.org"
-     "/home/r/org/code/tools.org" "/home/r/org/jobs/fuel.org"
-     "/home/r/org/joyce/companies/hk-agency-2.org"
+     "/home/r/org/jobs/fuel.org" "/home/r/org/joyce/companies/hk-agency-2.org"
      "/home/r/org/joyce/cl-dior.3.org" "/home/r/org/joyce/cl-dior.long.org"
      "/home/r/org/joyce/cl-dior.short.org" "/home/r/org/joyce/cv-11_23.2.org"
      "/home/r/org/joyce/cv-11_23.org" "/home/r/org/joyce/email-dior.org"
