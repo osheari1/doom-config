@@ -34,8 +34,15 @@
 
 
 ;; ;; light
+;; (setq doom-theme 'eink-emacs)
 ;; (setq doom-theme 'adwaita)
 ;; (setq doom-theme 'doom-acario-light)
+;; (setq doom-theme 'doom-ayu-light
+;;       doom-ayu-light-comment-bg t
+;;       doom-ayu-light-brighter-comments t
+;;       doom-ayu-light-brighter-modeline t)
+;;
+;; (setq doom-theme 'doom-tomorrow-day)
 
 ;; ;; Dark
 ;; (setq doom-theme 'doom-dark+)
@@ -147,7 +154,7 @@
  make-backup-files t
  ;; Set default projective path to Projects dir
  ;; projectile-project-search-path `("~/Code/" "~/Code/Audits/", "~/Code/Tutorials/", "~/Code/Libs/", "~/Code/Libs/cosmwasm", "~/Code/Tests")
- projectile-project-search-path `("~/study/scala" "~/study/rust")
+ projectile-project-search-path `("~/repos/" "~/study/scala" "~/study/rust" "~/caracal/apps/repos" "~/caracal/repos")
 
  ;; Rainbow delimiters mode
  rainbow-delimiters-mode t
@@ -231,6 +238,10 @@
 
 ;; ========== graphviz ==========
 ;; (use-package! company-graphviz-dot)
+(after! org
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((nil . t) (emacs-lisp . t) (dot . t))))
 
 
 ;; ========== magit ==========
@@ -463,8 +474,31 @@
 ;; ========== gptel ==========
 (use-package! gptel
   :config
-  (setq! gptel-api-key (get-authinfo-entry "api.openai.com")))
+  (setq! gptel-api-key (get-authinfo-entry "api.openai.com"))
+  (setq! gptel-model "gpt-4o"))
 
+;; Perplexity offers an OpenAI compatible API
+(gptel-make-openai "Perplexity"         ;Any name you want
+  :host "api.perplexity.ai"
+  :key (get-authinfo-entry "api.openai.com")                   ;can be a function that returns the key
+  :endpoint "/chat/completions"
+  :stream t
+  :models '(;; has many more, check perplexity.ai
+            "pplx-7b-chat"
+            "pplx-70b-chat"
+            "pplx-7b-online"
+            "pplx-70b-online"
+            "llama-3-sonar-small-32k-chat"
+            "llama-3-sonar-small-32k-online"
+            "llama-3-sonar-large-32k-chat"
+            "llama-3-sonar-large-32k-online"
+            "llama-3-8b-instruct"
+            "llama-3-70b-instruct"
+            "mixtral-8x7b-instruct"))
+
+
+
+(setq gptel-prompt-prefix-alist '((markdown-mode . "### ") (org-mode . "** ") (text-mode . "### ")))
 (setq gptel-directives
       '((default . "You are a large language model living in Emacs and a helpful assistant. Respond concisely.")
         (programming . "You are a large language model and a careful programmer. Provide code and only code as output without any additional text, prompt or note.")
@@ -476,6 +510,10 @@
         (crypto-trading . "Act as a crypto trading expert. Where examples or images would support the answer, please add them.")
         (forex-trading . "Act as a forex trading expert. Where examples or images would support the answer, please add them.")
         (options-trading . "Act as a options trading expert. Where examples or images would support the answer, please add them.")
+        (azure . "Act as an expert on Microsoft Azure and other Microsoft products. Where examples or images would support the answer, please add them.")
+        (llm . "You are an expert on Large Language Models and AI. Use bullet points where possible. Provide examples where they'd be valuable. Respond half concisely - not too verbose, but not too concise.")
+        (prompt-engineer . "You are an expert on LLM Prompt Engineering. Use bullet points where possible. Provide examples where they'd be valuable. Respond half concisely - not too verbose, but not too concise.")
+        (blockchain . "You are an expert on Blockchains and blockchain security. Use bullet points where possible. Provide examples where they'd be valuable. Respond half concisely - not too verbose, but not too concise.")
         ))
 
 
@@ -488,15 +526,23 @@
 (setq gptel-default-mode 'org-mode)
 
 
+;; ========== magit-gptel ==========
+;; (add-hook 'magit-mode-hook #'magit-gptcommit-mode)
+;; (map! :map magit-mode-map
+;;       :n "C-c C-g" #'magit-gptcommit-commit-accept)
+;; (after! (gptel-mode magit)
+;;   (magit-gptcommit-status-buffer-setup))
+
 
 ;; ========== Org ==========
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
-;; (add-hook! 'org-mode-hook #'+org-pretty-mode)
+(setq
+ org-directory "~/org/"
+ org-startup-with-inline-images t
+ org-babel-inline-result-wrap "src")
 
 ;; org-fancy-priorities
-;; (setq org-fancy-priorities-list '("❗" "⬆" "⬇" "☕"))
 (after! org-fancy-priorities
   (setq
    org-fancy-priorities-list '("🟥" "🟨" "🟩")
@@ -513,15 +559,12 @@
         :n "M-k" #'org-metaup)
 
   (setq
-   ;; Closed timestamp
-   ;; org-log-done 'time
+
+   ;; Use ripgrep for searching
 
    ;; Allow word linking
    org-link-search-must-match-exact-headline nil
 
-   ;; org-priority-faces '((65 . error)
-   ;;                      (66 . warning)
-   ;;                      (67 . success))
    org-todo-keywords '((sequence "BACKLOG(b)"
                         "TODO(t)"
                         "STRT(s!)"
@@ -542,11 +585,11 @@
                             ("PROJ" . +org-todo-project)
                             ("KILL" . +org-todo-cancel))  ;; org-todo-keyword-faces
 
-   org-agenda-files (directory-files-recursively "~/org/" "\\.org$")
-   ;; org-agenda-files '("~/org/caracal/" "~/org/marcopolo/" "~/org/")
+   org-agenda-files '(directory-files-recursively "~/org/" "\\.org$")
    )
   )
 
 
 ;; ========== Treemacs ==========
-(setq +treemacs-git-mode 'deferred)
+(setq +treemacs-git-mode 'deferred
+      treemacs-show-cursor t)

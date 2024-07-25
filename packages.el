@@ -81,3 +81,8 @@
 (package! gptel-extensions
   :recipe (:host github :repo "kamushadenes/gptel-extensions.el"))
 (package! undo-tree)
+;; (package! magit-gptcommit
+;;   :recipe (:host github :repo "douo/magit-gptcommit"))
+
+(package! eink-emacs
+  :recipe (:host github :repo "maio/eink-emacs"))

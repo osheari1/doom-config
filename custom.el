@@ -17,8 +17,8 @@
      "[/\\\\]coverage\\'" "[/\\\\]quasar\\'"))
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(org-agenda-files
-   '("~/org/trading/indicators.org" "/home/r/org/r/credit-cards-0apr.org"
-     "/home/r/org/r/r.org" "/home/r/org/caracal/meetings/india.org"
+   "/home/r/org/r/credit-cards-0apr.org" "/home/r/org/r/r.org"
+   '("~/org/caracal/gpts/technology-resiliency-plan.gpt.org"
      "/home/r/org/caracal/meetings/sales_strategy.org"
      "/home/r/org/caracal/omp/kitting-specs.org"
      "/home/r/org/caracal/omp/meetings.org" "/home/r/org/caracal/omp/omp.org"
@@ -31,9 +31,6 @@
      "/home/r/org/joyce/cl-dior.short.org" "/home/r/org/joyce/cv-11_23.2.org"
      "/home/r/org/joyce/cv-11_23.org" "/home/r/org/joyce/email-dior.org"
      "/home/r/org/joyce/gpt-cl-realestate.org"
-     "/home/r/org/llm/linux/mount-luks-encrypted-drive.org"
-     "/home/r/org/llm/linux/remove-lvm-lv-and-resize.org"
-     "/home/r/org/llm/linux/rename-lvm-volume-group.org"
      "/home/r/org/r/days-in-countries.org"))
  '(package-selected-packages '(lsp-ui))
  '(safe-local-variable-values
