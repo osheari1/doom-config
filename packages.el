@@ -86,3 +86,10 @@
 
 (package! eink-emacs
   :recipe (:host github :repo "maio/eink-emacs"))
+(package! alect-themes
+  :recipe (:host github :repo "alezost/alect-themes"))
+
+(package! emacs-flatui-theme
+  :recipe (:host github :repo "Jiazhlau/emacs-flatui-theme"))
+
+(package! mindre-theme)

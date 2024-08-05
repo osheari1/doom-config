@@ -21,6 +21,7 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
+(setq doom-font (font-spec :family "Source Code Pro" :size 24 :weight 'regular))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -34,8 +35,16 @@
 
 
 ;; ;; light
+(setq doom-theme 'alect-light-alt)
 ;; (setq doom-theme 'eink-emacs)
+;; (setq doom-theme 'mindre)
+;; (setq doom-theme 'alect-light)
 ;; (setq doom-theme 'adwaita)
+;; (setq doom-theme 'doom-oksolar-light
+;;       doom-oksolar-light-brighter-comments nil
+;;       doom-oksolar-light-brighter-modeline nil
+;;       )
+;; (setq doom-theme 'tango)
 ;; (setq doom-theme 'doom-acario-light)
 ;; (setq doom-theme 'doom-ayu-light
 ;;       doom-ayu-light-comment-bg t
@@ -49,7 +58,7 @@
 ;; (setq doom-theme 'doom-ephemeral)
 ;; (setq doom-theme 'doom-laserwave)
 ;; (setq doom-theme 'doom-oceanic-next)
-(setq doom-theme 'doom-one)
+;; (setq doom-theme 'doom-one)
 ;; (setq doom-theme 'doom-tomorrow-night)
 ;; (setq doom-theme 'doom-opera)
 ;; (setq doom-theme 'doom-Iosvkem)
@@ -57,6 +66,33 @@
 ;; (setq doom-theme 'doom-challenger-deep)
 ;; (setq doom-theme 'doom-palenight)
 ;; (setq doom-unicode-font "Noto Color Emoji")
+
+
+
+;; ========== EInk ==========
+;; eink font
+(defvar my/default-font doom-font)
+(defvar my/eink-font (font-spec :family "Source Code Pro" :size 28 :weight 'demi-bold))
+(defvar my/eink-font-toggle-status t)
+
+(defun my/eink-toggle-font ()
+  "Toggle between default and alternate font."
+  (interactive)
+  (if my/eink-font-toggle-status
+      (setq doom-font my/eink-font)
+    (setq doom-font my/default-font))
+  (setq my/eink-font-toggle-status (not my/eink-font-toggle-status))
+  (doom/reload-font))
+
+
+(map! :leader
+      :desc "Toggle font"
+      "t e" #'my/eink-toggle-font)
+
+(setq alect-overriding-faces
+      '((minibuffer-prompt))
+
+      )
 
 
 
@@ -139,11 +175,6 @@
             :dot           "•"
             )  ;; you could also add your own if you want
 
-;; (plist-delete! +ligatures-extra-symbols :true)
-;; (plist-delete! +ligatures-extra-symbols :false)
-;; (plist-delete! +ligatures-extra-symbols :str)
-;; (plist-delete! +ligatures-extra-symbols :bool)
-;; (plist-delete! +ligatures-extra-symbols :list)
 
 (setq
  ;; Doom disables auto-save
