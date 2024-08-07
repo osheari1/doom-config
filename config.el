@@ -89,12 +89,6 @@
       :desc "Toggle font"
       "t e" #'my/eink-toggle-font)
 
-(setq alect-overriding-faces
-      '((minibuffer-prompt))
-
-      )
-
-
 
 ;; ========== Verb ==========
 (add-hook! org-mode-hook #'verb-mode)
