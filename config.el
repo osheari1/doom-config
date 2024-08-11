@@ -82,7 +82,6 @@
 (load! "./configs/eink.el")
 (load! "./configs/projectile.el")
 (load! "./configs/undo-tree.el")
-(load! "./configs/llm.el")
 (load! "./configs/gptel.el")
 (load! "./configs/magit-gptcommit.el")
 
