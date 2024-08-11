@@ -78,13 +78,13 @@
 
 
 
-(load! "./configs/functions.el")
-(load! "./configs/eink.el")
-(load! "./configs/projectile.el")
-(load! "./configs/undo-tree.el")
-(load! "./configs/gptel.el")
-(load! "./configs/magit-gptcommit.el")
+(load! "./confs/functions.el")
+(load! "./confs/eink.el")
+(load! "./confs/projectile.el")
+(load! "./confs/undo-tree.el")
+(load! "./confs/gptel.el")
+(load! "./confs/magit-gptcommit.el")
 
 
 
-(load! "./configs/startup.el")
+(load! "./confs/startup.el")
