@@ -49,7 +49,7 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
 
-;; Misc
+;; misc
 (package! auth-source)
 (package! keycast)
 
@@ -60,7 +60,10 @@
 (package! magit-gptcommit)
 
 
-;; Themes
+;; org mode
+(package! org-fancy-priorities)
+
+;; themes
 (package! mindre-theme)
 (package! alect-themes
   :recipe (:host github :repo "alezost/alect-themes"))

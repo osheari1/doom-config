@@ -84,7 +84,7 @@
 (load! "./confs/undo-tree.el")
 (load! "./confs/gptel.el")
 (load! "./confs/magit-gptcommit.el")
-
+(load! "./confs/org.el")
 
 
 (load! "./confs/startup.el")
