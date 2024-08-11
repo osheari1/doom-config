@@ -11,7 +11,8 @@
       :desc "gptel"
       :prefix ("l" . "gpt")
       :nv "s" #'gptel-send
-      :nv "m" #'gptel-menu)
+      :nv "m" #'gptel-menu
+      :nv "l" #'gptel)
 
 
 
