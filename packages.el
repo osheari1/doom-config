@@ -51,13 +51,13 @@
 
 ;; Misc
 (package! auth-source)
+(package! keycast)
 
 ;; LLM
 (package! gptel)
 (package! gptel-extensions
   :recipe (:host github :repo "kamushadenes/gptel-extensions.el"))
 (package! magit-gptcommit)
-
 
 
 ;; Themes
