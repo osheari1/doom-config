@@ -20,7 +20,7 @@
       '((default . "")
         (programming . "You are a large language model and a careful programmer. Provide code and only code as output without any additional text, prompt or note.")
         (emacs . "Act as an emacs expert. Respond concisely. Where examples would support the answer, please add them.")
-        (emacs-code . "You are an expert on emacs and an expert emacs lisp programmer. Provide code and only code as output without any additional text, prompt or note.")
+        (emacs-code . "You are an expert on emacs and an expert emacs lisp programmer. Provide code and only code as output without any additional text, prompt or note. Do not wrap in a markdown codeblock (eg ```emacs-lisp ... ```)")
         )
       gptel-prompt-prefix-alist
       '((markdown-mode . "# ")
