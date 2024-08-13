@@ -79,12 +79,19 @@
 
 
 (load! "./confs/functions.el")
+
+;; org mode
+(load! "./confs/org-mode.el")
+(load! "./confs/org-fancy-priorities.el")
+
+
 (load! "./confs/eink.el")
 (load! "./confs/projectile.el")
 (load! "./confs/undo-tree.el")
 (load! "./confs/gptel.el")
 (load! "./confs/magit-gptcommit.el")
-(load! "./confs/org.el")
+
+
 
 
 (load! "./confs/startup.el")
