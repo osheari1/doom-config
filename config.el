@@ -83,6 +83,10 @@
 ;; org mode
 (load! "./confs/org-mode.el")
 (load! "./confs/org-fancy-priorities.el")
+(load! "./confs/deft.el")
+(load! "./confs/journal.el")
+(load! "./confs/roam.el")
+
 
 
 (load! "./confs/eink.el")
