@@ -11,4 +11,14 @@
        '(
          ("d" "default" plain "%?"
           :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
-          :unnarrowed t)))
+          :unnarrowed t)
+         ("e" "example" plain
+          (file "~/.config/doom/templates/org-roam/example.org")
+          :target (file+head
+                   "%<%Y%m%d%H%M%S>-turtles-${slug}.org"
+                   "#+title: Turtles-${title}\n#+filetags: TEST_FILE_TAG\n#+date: %U\n"
+                   )
+          :unnarrowed t)
+
+
+         ))
