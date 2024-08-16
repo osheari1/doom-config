@@ -52,6 +52,7 @@
 ;; misc
 (package! auth-source)
 (package! keycast)
+(package! rainbow-mode)
 
 ;; LLM
 (package! gptel)
@@ -62,6 +63,7 @@
 
 ;; org mode
 (package! org-fancy-priorities)
+;; (package! org-super-agenda)
 
 ;; themes
 (package! mindre-theme)
