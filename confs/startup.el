@@ -12,5 +12,6 @@
 
 ;; Boot in fullscreen mode
 (my/toggle-frame-fullscreen)
+
 ;; Add directories to project path
 (projectile-discover-projects-in-search-path)
