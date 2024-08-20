@@ -61,6 +61,11 @@ if the capture was not aborted."
     (with-current-buffer (org-capture-get :buffer)
       (add-to-list 'org-agenda-files (buffer-file-name)))))
 
+;; Predicate for filtering org-roam notes by tag
+(defun my/org-roam-filter-by-tag (tag-name)
+  (lambda (node)
+    (member tag-name (org-roam-node-tags node))))
+
 
 ;; Searching all nodes for those with a filetag == project
 (defun my/org-roam-find-project ()
