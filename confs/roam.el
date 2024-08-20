@@ -77,13 +77,13 @@ if the capture was not aborted."
   (org-roam-node-find
    nil
    nil
-   (my/org-roam-filter-by-tag "project")
+   (my/org-roam-filter-by-tag "@project")
    nil
    :templates '(("p" "project" plain
                  (file "~/.config/doom/templates/org-roam/project.org")
                  :target (file+head
                           "%<%Y%m%d%H%M%S>-${slug}.org"
-                          "#+title: ${title}\n#+category: ${title}\n#+filetags: project")
+                          "#+title: ${title}\n#+category: ${title}\n#+filetags: @project")
                  :unnarrowed t))))
 
 
