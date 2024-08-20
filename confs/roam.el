@@ -31,11 +31,11 @@
           (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n"))))
 
 ;; org-roam notes map
-(map!
- (:prefix-map ("n" . "notes")
-              (:when (modulep! :lang org +roam2)
-                (:prefix ("r" . "roam")
-                 :desc "Find project" "p" #'my/org-roam-find-project))))
+(map! :leader
+      (:prefix-map ("n" . "notes")
+                   (:when (modulep! :lang org +roam2)
+                     (:prefix ("r" . "roam")
+                      :desc "Find project" "p" #'my/org-roam-find-project))))
 
 ;; org-mode map
 (map! (:when (modulep! :lang org +roam2)
