@@ -84,7 +84,8 @@
 (load! "./confs/org-mode.el")
 (load! "./confs/org-fancy-priorities.el")
 (load! "./confs/deft.el")
-(load! "./confs/roam.el")
+(load! "./confs/org-roam/roam.el")
+;; (load! "./confs/org-roam/capture-templates.el")
 
 
 

@@ -1,5 +1,7 @@
 ;;; confs/roam.el -*- lexical-binding: t; -*-
 
+(load! "capture-templates.el")
+
 
 (setq! org-roam-directory "~/org/"
        org-roam-graph-viewer "/usr/bin/emacs"
@@ -7,35 +9,34 @@
        ;; In org files, don't need to type '[[]]' to get completion session
        org-roam-completion-everywhere t
 
-
        ;; capture templates
-       ;; Use the below for example templates
-       ;;
-       ;; #+begin_src emacs-lisp
-       ;; ("e" "example" plain
-       ;;  (file "~/.config/doom/templates/org-roam/example.org")
-       ;;  :target (file+head
-       ;;           "%<%Y%m%d%H%M%S>-turtles-${slug}.org"
-       ;;           "#+title: Turtles-${title}\n#+filetags: TEST_FILE_TAG\n#+date: %U\n#+category: ${title}\n"
-       ;;           )
-       ;;  :unnarrowed t)
-       ;; #+end_src
+       ;; TODO: Extract head into files
        org-roam-capture-templates
-       '(("d" "default" plain "%?"
-          :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: ${title}")
+       `(("d" "default" plain
+          (file ,(org-roam-capture-template-%?-path "default"))
+          :target (file+head
+                   org-roam-capture-template-filename
+                   "#+title: ${title}\n#+category: ${title}")
           :unnarrowed t))
+
+
 
        ;; capture templates dailies
        org-roam-dailies-capture-templates
        '(("d" "default" entry "* %?" :target
           (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n"))))
 
+
+
+
+
 ;; org-roam notes map
 (map! :leader
-      (:prefix-map ("n" . "notes")
-                   (:when (modulep! :lang org +roam2)
-                     (:prefix ("r" . "roam")
-                      :desc "Find project" "p" #'my/org-roam-find-project))))
+      (:prefix-map
+       ("n" . "notes")
+       (:when (modulep! :lang org +roam2)
+         (:prefix ("r" . "roam")
+          :desc "Find project" "p" #'my/org-roam-find-project))))
 
 ;; org-mode map
 (map! (:when (modulep! :lang org +roam2)
@@ -79,22 +80,9 @@ if the capture was not aborted."
    nil
    (my/org-roam-filter-by-tag "@project")
    nil
-   :templates '(("p" "project" plain
-                 (file "~/.config/doom/templates/org-roam/project.org")
+   :templates `(("p" "project" plain
+                 (file ,(org-roam-capture-template-%?-path "project"))
                  :target (file+head
-                          "%<%Y%m%d%H%M%S>-${slug}.org"
+                          org-roam-capture-template-filename
                           "#+title: ${title}\n#+category: ${title}\n#+filetags: @project")
                  :unnarrowed t))))
-
-
-
-;; Like org-roam-node-insert, but won't prompt for content.
-;; Use when you want to create a new node from another node without
-;; filling in content.
-(defun my/org-roam-node-insert-immediate (arg &rest args)
-  (interactive "P")
-  (let ((args (cons arg args))
-        (org-roam-capture-templates (list (append (car org-roam-capture-templates)
-                                                  '(:immediate-finish t)))))
-    (apply #'org-roam-node-insert args)))
-
