@@ -12,7 +12,7 @@
 
         ;; Topic
         (:startgrouptag)
-        ("@crypto")
+        ("@crypto". ?C)
         ("@ai" . ?A)
         (:grouptags)
         ("@ai#llm" . ?l)
