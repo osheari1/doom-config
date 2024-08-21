@@ -13,9 +13,9 @@
         (:startgroup)
         ("@work" . ?W)
         (:grouptags)
-        ("@caracal" . ?c)
-        ("@dlt" . ?d)
-        ("@india" . ?i)
+        ("@work#caracal" . ?c)
+        ("@work#dlt" . ?d)
+        ("@work#india" . ?i)
         (:endgroup)
 
         ;; Projects
@@ -23,13 +23,15 @@
         ("@project" . ?P)
         (:endgrouptag)
 
-
         ;; Emacs
         (:startgrouptag)
         ("@emacs" . ?E)
         (:grouptags)
-        ("@gptel" . ?g)
+        ("@emacs#gptel" . ?g)
+        ("@emacs#roam" . ?r)
+        ("@emacs#org" . ?o)
         (:endgrouptag)
+
 
         ;; Terminal
         (:startgrouptag)
@@ -41,13 +43,14 @@
         (:startgrouptag)
         ("@ai" . ?A)
         (:grouptags)
-        ("@llm" . ?l)
-        ("@audio" . ?a)
-        ("@video" . ?v)
+        ("@ai#llm" . ?l)
+        ("@ai#audio" . ?a)
+        ("@ai#video" . ?v)
         (:endgrouptag)
 
         ;; Misc
         (:startgrouptag)
         ("@ref" . ?R) ;; Reference material
         ("@learn" . ?L)
+
         (:endgrouptag)))
