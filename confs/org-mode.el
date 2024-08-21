@@ -9,7 +9,20 @@
 
 (setq org-tag-alist
       '(
-        ;; Category
+
+        ;; Topic
+        (:startgrouptag)
+        ("@crypto")
+        ("@ai" . ?A)
+        (:grouptags)
+        ("@ai#llm" . ?l)
+        ("@ai#audio" . ?a)
+        ("@ai#video" . ?v)
+        (:endgrouptag)
+
+
+
+        ;; Work category - mutually exclusive
         (:startgroup)
         ("@work" . ?W)
         (:grouptags)
@@ -39,18 +52,20 @@
         (:endgrouptag)
 
 
-        ;; AI
-        (:startgrouptag)
-        ("@ai" . ?A)
-        (:grouptags)
-        ("@ai#llm" . ?l)
-        ("@ai#audio" . ?a)
-        ("@ai#video" . ?v)
-        (:endgrouptag)
 
         ;; Misc
         (:startgrouptag)
         ("@ref" . ?R) ;; Reference material
         ("@learn" . ?L)
+        (:endgrouptag)
 
-        (:endgrouptag)))
+        ;; People
+        (:startgrouptag)
+        ("@person")
+        (:grouptags)
+        ("@person#contact")
+        ("@person#friend")
+        (:endgrouptag)
+
+
+        ))
