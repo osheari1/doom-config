@@ -11,31 +11,43 @@
       '(
         ;; Category
         (:startgroup)
-        ("@work" . ?w)
+        ("@work" . ?W)
         (:grouptags)
         ("@caracal" . ?c)
         ("@dlt" . ?d)
+        ("@india" . ?i)
         (:endgroup)
 
         ;; Projects
         (:startgrouptag)
-        ("@project" . ?p)
+        ("@project" . ?P)
         (:endgrouptag)
 
 
         ;; Emacs
         (:startgrouptag)
-        ("@emacs" . ?e)
+        ("@emacs" . ?E)
+        (:grouptags)
+        ("@gptel" . ?g)
         (:endgrouptag)
+
+        ;; Terminal
+        (:startgrouptag)
+        ("@terminal" . ?T)
+        (:endgrouptag)
+
 
         ;; AI
         (:startgrouptag)
-        ("@ai" . ?a)
+        ("@ai" . ?A)
         (:grouptags)
-        ("@llm" . ?c)
+        ("@llm" . ?l)
+        ("@audio" . ?a)
+        ("@video" . ?v)
         (:endgrouptag)
 
         ;; Misc
         (:startgrouptag)
-        ("@ref" . ?r)                   ;; Reference material
+        ("@ref" . ?R) ;; Reference material
+        ("@learn" . ?L)
         (:endgrouptag)))
