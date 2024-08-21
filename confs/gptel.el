@@ -4,7 +4,8 @@
   :config
   (setq! gptel-api-key (get-authinfo-entry "api.openai.com")
          gptel-model "gpt-4o"
-         gptel-default-mode 'org-mode))
+         gptel-default-mode 'org-mode
+         gptel-org-branching-context t))
 
 
 (map! :leader
@@ -12,7 +13,9 @@
       :prefix ("l" . "gpt")
       :nv "s" #'gptel-send
       :nv "m" #'gptel-menu
-      :nv "l" #'gptel)
+      :nv "l" #'gptel
+      :nv "t" #'gptel-org-set-topic
+      :nv "p" #'gptel-org-set-properties)
 
 
 
@@ -25,5 +28,4 @@
       gptel-prompt-prefix-alist
       '((markdown-mode . "# ")
         (org-mode . "* ")
-        (text-mode . "# "))
-      )
+        (text-mode . "# ")))
