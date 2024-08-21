@@ -36,7 +36,9 @@
        ("n" . "notes")
        (:when (modulep! :lang org +roam2)
          (:prefix ("r" . "roam")
-          :desc "Find project" "p" #'my/org-roam-find-project))))
+          :desc "Find project" "p" #'my/org-roam-find-project
+          (:prefix ("c" . "filter")
+           :desc "By tag" "t" #'my/org-roam-filter-nodes-by-tag)))))
 
 ;; org-mode map
 (map! (:when (modulep! :lang org +roam2)
@@ -86,3 +88,29 @@ if the capture was not aborted."
                           org-roam-capture-template-filename
                           "#+TITLE: ${title}\n#+CATEGORY: ${title}\n#+FILETAGS: @project")
                  :unnarrowed t))))
+
+
+(defun my/org-ql-get-all-tags ()
+  "Get a list of all tags used in Org-mode files."
+  (let ((result
+         (org-ql-select (org-agenda-files)
+           '(tags)
+           :action (lambda ()
+                     (org-get-tags)))))
+    (delete-dups (apply 'append result))))
+
+
+;; Filters for nodes that contain a particular filter
+(defun my/org-roam-filter-nodes-by-tag ()
+  "Interactively filter org-roam nodes by user-specified tags."
+  (interactive)
+  (let* ((tag-input (completing-read "Enter tag: " (my/org-ql-get-all-tags)))
+         (tag-filter (lambda (node)
+                       (org-ql-select (org-roam-node-file node)
+                         `(tags ,tag-input)))))
+    (org-roam-node-find
+     nil               ;; Prompt (nil for default)
+     nil               ;; Initial input (nil for default)
+     tag-filter        ;; Node filtering lambda
+     nil               ;; Other params (nil for default)
+     :templates nil))) ;; Optionally, define templates
