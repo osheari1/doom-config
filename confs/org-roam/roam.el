@@ -16,7 +16,7 @@
           (file ,(org-roam-capture-template-%?-path "default"))
           :target (file+head
                    org-roam-capture-template-filename
-                   "#+title: ${title}\n#+category: ${title}")
+                   "#+TITLE: ${title}\n#+CATEGORY: ${title}")
           :unnarrowed t))
 
 
@@ -24,7 +24,7 @@
        ;; capture templates dailies
        org-roam-dailies-capture-templates
        '(("d" "default" entry "* %?" :target
-          (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n"))))
+          (file+head "%<%Y-%m-%d>.org" "#+TITLE: %<%Y-%m-%d>\n"))))
 
 
 
@@ -84,5 +84,5 @@ if the capture was not aborted."
                  (file ,(org-roam-capture-template-%?-path "project"))
                  :target (file+head
                           org-roam-capture-template-filename
-                          "#+title: ${title}\n#+category: ${title}\n#+filetags: @project")
+                          "#+TITLE: ${title}\n#+CATEGORY: ${title}\n#+FILETAGS: @project")
                  :unnarrowed t))))
