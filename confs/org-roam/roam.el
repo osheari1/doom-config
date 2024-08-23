@@ -13,7 +13,7 @@
        ;; TODO: Extract head into files
        org-roam-capture-templates
        `(("d" "default" plain
-          (file ,(org-roam-capture-template-%?-path "default"))
+          (file ,(org-roam-capture-template-body-path "default"))
           :target (file+head
                    org-roam-capture-template-filename
                    "#+TITLE: ${title}\n#+CATEGORY: ${title}")
@@ -38,7 +38,7 @@
          (:prefix ("r" . "roam")
           :desc "Find project" "p" #'my/org-roam-find-project
           (:prefix ("c" . "filter")
-           :desc "By tag" "t" #'my/org-roam-filter-nodes-by-tag)))))
+           :desc "By tag" "t" #'my/org-roam-find-nodes-by-tag)))))
 
 ;; org-mode map
 (map! (:when (modulep! :lang org +roam2)
@@ -83,11 +83,31 @@ if the capture was not aborted."
    (my/org-roam-filter-by-tag "@project")
    nil
    :templates `(("p" "project" plain
-                 (file ,(org-roam-capture-template-%?-path "project"))
+                 (file ,(org-roam-capture-template-body-path "project"))
                  :target (file+head
                           org-roam-capture-template-filename
                           "#+TITLE: ${title}\n#+CATEGORY: ${title}\n#+FILETAGS: @project")
                  :unnarrowed t))))
+
+(defun my/org-roam-capture-project-task ()
+  (interactive)
+  ;; Add the project file to the agenda after capture is finished
+  (add-hook 'org-capture-after-finalize-hook #'my/org-roam-project-finalize-hook)
+
+  ;; Capture the new task, creating the project file if necessary
+  (org-roam-capture- :node
+                     (org-roam-node-read
+                      nil
+                      (my/org-roam-filter-by-tag "@project"))
+                     :templates
+                     `(("p" "project" plain
+                        (file ,(org-roam-capture-template-body-path "project-task"))
+                        :target (file+head
+                                 org-roam-capture-template-filename
+                                 "#+TITLE: ${title}\n#+CATEGORY: ${title}\n#+FILETAGS: @project"
+                                 )))))
+
+
 
 
 (defun my/org-ql-get-all-tags ()
@@ -101,7 +121,7 @@ if the capture was not aborted."
 
 
 ;; Filters for nodes that contain a particular filter
-(defun my/org-roam-filter-nodes-by-tag ()
+(defun my/org-roam-find-nodes-by-tag ()
   "Interactively filter org-roam nodes by user-specified tags."
   (interactive)
   (let* ((tag-input (completing-read "Enter tag: " (my/org-ql-get-all-tags)))
