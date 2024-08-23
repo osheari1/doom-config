@@ -16,15 +16,15 @@
           (file ,(org-roam-capture-template-body-path "default"))
           :target (file+head
                    org-roam-capture-template-filename
-                   "#+TITLE: ${title}\n#+CATEGORY: ${title}")
+                   "#+TITLE: ${title}\n#+CATEGORY: ${title}\n#+FILETAGS: %^{filetags}")
           :unnarrowed t))
-
 
 
        ;; capture templates dailies
        org-roam-dailies-capture-templates
-       '(("d" "default" entry "* %?" :target
-          (file+head "%<%Y-%m-%d>.org" "#+TITLE: %<%Y-%m-%d>\n"))))
+       `(("d" "default" plain
+          (file ,(org-roam-capture-template-body-path "dailies-default"))
+          :target (file+head "%<%Y-%m-%d>.org" "#+TITLE: %<%Y-%m-%d>\n"))))
 
 
 ;; org-roam notes map
