@@ -3,8 +3,8 @@
 (defun org-roam-capture-template-filename ()
   "%<%Y%m%d%H%M%S>-${slug}.org")
 
-(defun org-roam-capture-template-%?-path (template)
-  (concat  "~/.config/doom/templates/org-roam/" template ".%?.org"))
+(defun org-roam-capture-template-body-path (template)
+  (concat  "~/.config/doom/templates/org-roam/" template ".body.org"))
 
 (defun org-roam-capture-template-head-path (template)
   (concat  "~/.config/doom/templates/org-roam/" template ".head.org"))
