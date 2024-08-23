@@ -27,9 +27,6 @@
           (file+head "%<%Y-%m-%d>.org" "#+TITLE: %<%Y-%m-%d>\n"))))
 
 
-
-
-
 ;; org-roam notes map
 (map! :leader
       (:prefix-map
@@ -37,7 +34,9 @@
        (:when (modulep! :lang org +roam2)
          (:prefix ("r" . "roam")
           :desc "Find project" "p" #'my/org-roam-find-project
-          (:prefix ("c" . "filter")
+          (:prefix ("c" . "capture")
+           :desc "Project task" "p" #'my/org-roam-capture-project-task)
+          (:prefix ("j" . "find")
            :desc "By tag" "t" #'my/org-roam-find-nodes-by-tag)))))
 
 ;; org-mode map
