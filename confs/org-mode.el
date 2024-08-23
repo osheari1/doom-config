@@ -12,23 +12,27 @@
         ;; Work category - mutually exclusive
 
 
-        (:startgroup)
+        (:startgrouptag)
         ("@caracal" . ?C)
         (:grouptags)
         ("@caracal%it_sln")
-        (:endgroup)
+        (:endgrouptag)
 
-        (:startgrouptag)
+
+        (:startgroup)
         ("@biz". ?B)
         (:grouptags)
         ("@biz%dlt" . ?d)
         ("@biz%bala" . ?b)
+        (:endgroup)
+
+
+        (:startgrouptag)
+        ("@crypto")
         (:endgrouptag)
 
 
-        ;; Topic
         (:startgrouptag)
-        ("@crypto")
         ("@ai")
         (:grouptags)
         ("@ai%llm" . ?l)
@@ -36,10 +40,11 @@
         ("@ai%video" . ?v)
         (:endgrouptag)
 
+
         (:startgrouptag)
         ("@finance" . ?F)
         (:grouptags)
-        ("@finance%realestate")
+        ("@realestate")
         (:endgrouptag)
 
 
@@ -47,6 +52,7 @@
         (:startgrouptag)
         ("@project" . ?P)
         (:endgrouptag)
+
 
         ;; Emacs
         (:startgrouptag)
@@ -58,23 +64,20 @@
         (:endgrouptag)
 
 
-        ;; Terminal
-        (:startgrouptag)
-        ("@terminal" . ?T)
-        (:endgrouptag)
-
-
-
-        ;; Misc
-        (:startgrouptag)
-        ("@ref" . ?R) ;; Reference material
-        ("@learn" . ?L)
-        ("@meeting")
-        (:endgrouptag)
-
         ;; People
         (:startgrouptag)
         ("@person")
         (:grouptags)
         ("@person%contact")
-        (:endgrouptag)))
+        (:endgrouptag)
+
+        ;; Misc
+        ("@ref") ;; Reference material
+        ("@learn")
+        ("@meeting")
+        ("@terminal")
+
+
+
+
+        ))
