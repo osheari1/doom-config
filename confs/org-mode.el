@@ -2,20 +2,15 @@
 
 
 (setq org-agenda-files (directory-files-recursively org-directory "\\.org$")
-      org-log-done 'time    ;; Adds a timestamp and/or note upon task completion
-      )
+      org-log-done 'time) ;; Adds a timestamp and/or note upon task completion
 
 
 
 (setq org-tag-alist
-      '(
-        ;; Work category - mutually exclusive
-
-
-        (:startgrouptag)
+      '((:startgrouptag)
         ("@caracal" . ?C)
         (:grouptags)
-        ("@caracal%it_sln")
+        ("@caracal%t_s")
         (:endgrouptag)
 
 
@@ -63,6 +58,10 @@
         ("@emacs%org" . ?o)
         (:endgrouptag)
 
+        ;; Tool
+        ("@tool")
+        ("@terminal")
+
 
         ;; People
         (:startgrouptag)
@@ -75,7 +74,6 @@
         ("@ref") ;; Reference material
         ("@learn")
         ("@meeting")
-        ("@terminal")
 
 
 

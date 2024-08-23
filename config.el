@@ -86,7 +86,7 @@
 (load! "./confs/deft.el")
 (load! "./confs/org-roam/roam.el")
 ;; (load! "./confs/org-roam/capture-templates.el")
-
+(load! "./confs/org-super-agenda.el")
 
 
 (load! "./confs/eink.el")
