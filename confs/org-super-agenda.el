@@ -22,7 +22,13 @@
     :time-grid t
     :tag ("@biz%bala"))
 
+
    (:name "Tools"
-    :tag ("@tool" "@emacs" "@emacs%gptel" "@emacs%roam" "@emacs%org"))
+    :tag ("@tool"
+          "@emacs"
+          "@emacs%gptel"
+          "@emacs%roam"
+          "@emacs%org"
+          "@emacs%agenda"))
    ))
 (org-super-agenda-mode)

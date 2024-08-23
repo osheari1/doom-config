@@ -56,6 +56,7 @@
         ("@emacs%gptel" . ?g)
         ("@emacs%roam" . ?r)
         ("@emacs%org" . ?o)
+        ("@emacs%agenda")
         (:endgrouptag)
 
         ;; Tool
