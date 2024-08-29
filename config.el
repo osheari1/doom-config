@@ -97,5 +97,4 @@
 
 
 
-
 (load! "./confs/startup.el")
