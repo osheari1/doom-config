@@ -22,6 +22,9 @@
     :time-grid t
     :tag ("@biz%bala"))
 
+   (:name "Finances"
+    :time-grid t
+    :tag ("@finance" "@bills" "@realestate"))
 
    (:name "Tools"
     :tag ("@tool"
