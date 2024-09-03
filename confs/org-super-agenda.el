@@ -1,6 +1,14 @@
 ;;; confs/org-super-agenda.el -*- lexical-binding: t; -*-
 
 
+
+;; Update faces for all groups
+(custom-set-faces! '(org-super-agenda-header
+                     :height 1.2
+                     :weight bold
+                     :foreground "#1F8DD6"))
+
+
 (setq
  org-super-agenda-header-map 'evil-org-agenda-mode-map
 
