@@ -8,6 +8,23 @@
                      :weight bold
                      :foreground "#1F8DD6"))
 
+(custom-set-faces! '(org-agenda-date
+                     :height 1.4
+                     :weight bold
+                     :foreground "#1662AF"))
+
+(custom-set-faces! '(org-agenda-date-today
+                     :height 1.4
+                     :weight bold
+                     :foreground "#4F4A3D"
+                     :background "#FFFFCC"))
+
+(custom-set-faces! '(org-agenda-date-weekend
+                     :height 1.4
+                     :weight bold
+                     :foreground "#4E4E4E"))
+
+
 
 (setq
  org-super-agenda-header-map 'evil-org-agenda-mode-map
