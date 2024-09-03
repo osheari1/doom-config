@@ -11,18 +11,21 @@
 (custom-set-faces! '(org-agenda-date
                      :height 1.4
                      :weight bold
-                     :foreground "#1662AF"))
+                     :foreground "#1662AF"
+                     :overline t))
 
 (custom-set-faces! '(org-agenda-date-today
                      :height 1.4
                      :weight bold
                      :foreground "#4F4A3D"
-                     :background "#FFFFCC"))
+                     :background "#FFFFCC"
+                     :overline t))
 
 (custom-set-faces! '(org-agenda-date-weekend
                      :height 1.4
                      :weight bold
-                     :foreground "#4E4E4E"))
+                     :foreground "#4E4E4E"
+                     :overline t))
 
 
 
