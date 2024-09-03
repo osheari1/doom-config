@@ -53,13 +53,14 @@
 (package! auth-source)
 (package! keycast)
 (package! rainbow-mode)
+(package! hledger-mode)
+(package! flycheck-hledger)
 
 ;; LLM
 (package! gptel)
 (package! gptel-extensions
   :recipe (:host github :repo "kamushadenes/gptel-extensions.el"))
 (package! magit-gptcommit)
-
 
 ;; org mode
 (package! org-fancy-priorities)

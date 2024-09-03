@@ -88,6 +88,10 @@
 ;; (load! "./confs/org-roam/capture-templates.el")
 (load! "./confs/org-super-agenda.el")
 
+;; hledger
+(load! "./confs/hledger-mode.el")
+(load! "./confs/flycheck-hledger.el")
+
 
 (load! "./confs/eink.el")
 (load! "./confs/projectile.el")
