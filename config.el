@@ -84,7 +84,6 @@
 ;; org mode
 (load! "./confs/org-mode.el")
 (load! "./confs/org-fancy-priorities.el")
-(load! "./confs/deft.el")
 (load! "./confs/org-roam/roam.el")
 (load! "./confs/org-super-agenda.el")
 
