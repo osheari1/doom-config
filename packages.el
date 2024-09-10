@@ -57,6 +57,7 @@
 (package! flycheck-hledger)
 (package! csv-mode)
 (package! colorful-mode)
+(package! git-link)
 
 ;; LLM
 (package! gptel)
