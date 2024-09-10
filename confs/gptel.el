@@ -10,7 +10,7 @@
 
 (map! :leader
       :desc "gptel"
-      :prefix ("l" . "gpt")
+      :prefix ("l" . "gptel")
       :nv "s" #'gptel-send
       :nv "m" #'gptel-menu
       :nv "l" #'gptel
