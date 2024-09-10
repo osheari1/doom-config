@@ -8,3 +8,14 @@
       org-enforce-todo-dependencies t
       org-enforce-todo-checkbox-dependencies t
       org-indent-mode t)
+
+
+(setq org-babel-load-languages
+      '((emacs-lisp . t)
+        (python . t)
+        (rust . t)
+        (org . t)))
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ org-babel-load-languages)
