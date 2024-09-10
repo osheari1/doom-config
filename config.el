@@ -93,6 +93,7 @@
 (load! "./confs/flycheck-hledger.el")
 
 
+(load! "./confs/colorful-mode.el")
 (load! "./confs/eink.el")
 (load! "./confs/projectile.el")
 (load! "./confs/undo-tree.el")
