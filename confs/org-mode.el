@@ -6,4 +6,5 @@
       org-complete-tags-always-offer-all-agenda-tags t
 
       org-enforce-todo-dependencies t
-      org-enforce-todo-checkbox-dependencies t)
+      org-enforce-todo-checkbox-dependencies t
+      org-indent-mode t)
