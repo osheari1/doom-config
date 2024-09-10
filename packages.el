@@ -55,6 +55,7 @@
 (package! rainbow-mode)
 (package! hledger-mode)
 (package! flycheck-hledger)
+(package! csv-mode)
 
 ;; LLM
 (package! gptel)
@@ -66,6 +67,7 @@
 (package! org-fancy-priorities)
 (package! org-ql)
 (package! org-super-agenda)
+
 
 ;; themes
 (package! mindre-theme)
