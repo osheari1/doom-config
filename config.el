@@ -86,6 +86,7 @@
 (load! "./confs/org-fancy-priorities.el")
 (load! "./confs/org-roam/roam.el")
 (load! "./confs/org-super-agenda.el")
+(load! "./confs/calc.el")
 
 ;; hledger
 (load! "./confs/hledger-mode.el")
@@ -97,7 +98,6 @@
 (load! "./confs/undo-tree.el")
 (load! "./confs/gptel.el")
 (load! "./confs/magit-gptcommit.el")
-
 
 
 (load! "./confs/startup.el")
