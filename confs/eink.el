@@ -20,5 +20,4 @@
 
 
 (map! :leader
-      :desc "Toggle font"
-      "t e" #'my/eink-toggle-font)
+      :desc "Toggle font" "t e" #'my/eink-toggle-font)
