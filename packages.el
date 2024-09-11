@@ -69,6 +69,7 @@
 (package! org-fancy-priorities)
 (package! org-ql)
 (package! org-super-agenda)
+(package! org-edna)
 (package! ob-rust
   :recipe (:host github :repo "micanzhang/ob-rust"))
 (package! org-transclusion)
