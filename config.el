@@ -87,6 +87,7 @@
 (load! "./confs/org-roam/roam.el")
 (load! "./confs/org-super-agenda.el")
 (load! "./confs/calc.el")
+(load! "./confs/org-transclusion.el")
 
 ;; hledger
 (load! "./confs/hledger-mode.el")

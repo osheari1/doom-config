@@ -71,6 +71,7 @@
 (package! org-super-agenda)
 (package! ob-rust
   :recipe (:host github :repo "micanzhang/ob-rust"))
+(package! org-transclusion)
 
 
 ;; themes
