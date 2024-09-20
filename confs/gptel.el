@@ -34,3 +34,6 @@
 (gptel-make-anthropic "Claude"
   :stream t
   :key (get-authinfo-entry "api.anthropic.com"))
+
+(gptel-make-ollama "Ollama"
+  :models '("llama3.1:8b"))
