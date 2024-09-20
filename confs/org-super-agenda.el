@@ -36,7 +36,7 @@
  '(
    (:name "Caracal"
     :time-grid t
-    :tag ("@caracal"))
+    :tag ("@caracal" "@caracal%omp"))
 
    (:name "Caracal Tech"
     :time-grid t
