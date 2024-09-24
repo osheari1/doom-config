@@ -34,6 +34,10 @@
 
  org-super-agenda-groups
  '(
+   (:name "Next"
+    :time-grid t
+    :and (:priority "A" :todo t))
+
    (:name "Caracal"
     :time-grid t
     :tag ("@caracal" "@caracal%omp"))
@@ -42,9 +46,9 @@
     :time-grid t
     :tag ("@caracal%tech"))
 
-   (:name "Biz - DLT"
+   (:name "Code Alchemists"
     :time-grid t
-    :tag ("@biz%dlt"))
+    :tag ("@biz%dlt" "@code_alch"))
 
    (:name "Biz - Bala"
     :time-grid t
@@ -58,12 +62,15 @@
     :time-grid t
     :tag ("@finance" "@bills" "@realestate"))
 
-   (:name "Tools"
-    :tag ("@tool"
-          "@emacs"
+   (:name "Tools" :tag ("@tool" ""))
+
+   (:name "Emacs"
+    :tag ("@emacs"
           "@emacs%gptel"
           "@emacs%roam"
           "@emacs%org"
           "@emacs%agenda"))
    ))
+
+
 (org-super-agenda-mode)
