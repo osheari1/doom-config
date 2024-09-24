@@ -102,6 +102,7 @@
 (load! "./confs/gptel.el")
 (load! "./confs/magit-gptcommit.el")
 (load! "./confs/git-link.el")
+(load! "./confs/lsp.el")
 
 
 (load! "./confs/startup.el")
