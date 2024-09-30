@@ -62,7 +62,7 @@
     :time-grid t
     :tag ("@finance" "@bills" "@realestate"))
 
-   (:name "Tools" :tag ("@tool" ""))
+   (:name "Tools" :tag "@tool")
 
    (:name "Emacs"
     :tag ("@emacs"
