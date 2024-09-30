@@ -58,6 +58,8 @@
 (package! csv-mode)
 (package! colorful-mode)
 (package! git-link)
+(package! sxhkd-mode
+  :recipe (:host github :repo "xFA25E/sxhkd-mode"))
 
 ;; LLM
 (package! gptel)
