@@ -42,9 +42,9 @@
     :time-grid t
     :tag ("@caracal" "@caracal%omp"))
 
-   (:name "Caracal Tech"
+   (:name "ArchRAG"
     :time-grid t
-    :tag ("@caracal%tech"))
+    :tag "@archrag")
 
    (:name "Code Alchemists"
     :time-grid t
