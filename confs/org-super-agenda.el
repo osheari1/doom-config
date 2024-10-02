@@ -48,7 +48,7 @@
 
    (:name "Code Alchemists"
     :time-grid t
-    :tag ("@biz%dlt" "@code_alch"))
+    :tag ("@biz%dlt" "@calch"))
 
    (:name "Biz - Bala"
     :time-grid t
