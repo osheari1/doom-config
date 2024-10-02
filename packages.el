@@ -61,6 +61,7 @@
 (package! sxhkd-mode
   :recipe (:host github :repo "xFA25E/sxhkd-mode"))
 (package! systemd-mode)
+(package! telega)
 
 ;; LLM
 (package! gptel)
