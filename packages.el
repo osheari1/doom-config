@@ -60,6 +60,7 @@
 (package! git-link)
 (package! sxhkd-mode
   :recipe (:host github :repo "xFA25E/sxhkd-mode"))
+(package! systemd-mode)
 
 ;; LLM
 (package! gptel)
