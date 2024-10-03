@@ -14,7 +14,9 @@
       '((emacs-lisp . t)
         (python . t)
         (rust . t)
-        (org . t)))
+        (org . t)
+        (lisp . t)
+        ))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
