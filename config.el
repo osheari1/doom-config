@@ -104,6 +104,7 @@
 (load! "./confs/lsp.el")
 (load! "./confs/sxhkd-mode.el")
 (load! "./confs/telega.el")
+(load! "./confs/vterm.el")
 
 
 (load! "./confs/startup.el")
