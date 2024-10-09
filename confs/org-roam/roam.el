@@ -44,8 +44,7 @@
         :map org-mode-map
         :localleader
         :prefix ("m" . "org-roam")
-        "G" #'org-id-get-create
-        "I" #'my/org-roam-node-insert-immediate))
+        "G" #'org-id-get-create))
 
 
 
