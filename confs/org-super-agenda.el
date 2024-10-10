@@ -60,7 +60,7 @@
 
    (:name "Finances"
     :time-grid t
-    :tag ("@finance" "@bills" "@realestate"))
+    :tag ("@fin" "@fin%bills" "@fin%cc" "@realestate"))
 
    (:name "Tools" :tag "@tool")
 
