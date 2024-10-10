@@ -6,7 +6,7 @@
     :config
     (setq magit-gptcommit-llm-provider (make-llm-openai
                                         :chat-model "gpt-4o-mini"
-                                        :key (get-authinfo-entry "api.openai.com"))
+                                        :key (getenv "OPENAI_API_KEY"))
           llm-warn-on-nonfree nil))
 
   ;; Enable magit-gptcommit-mode to watch staged changes

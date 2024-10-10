@@ -2,7 +2,7 @@
 
 (use-package! gptel
   :config
-  (setq! gptel-api-key (get-authinfo-entry "api.openai.com")
+  (setq! gptel-api-key (getenv "OPENAI_API_KEY")
          gptel-model "gpt-4o"
          gptel-default-mode 'org-mode
          gptel-org-branching-context t))
@@ -33,7 +33,7 @@
 
 (gptel-make-anthropic "Claude"
   :stream t
-  :key (get-authinfo-entry "api.anthropic.com"))
+  :key (getenv "ANTHROPIC_API_KEY"))
 
 (gptel-make-ollama "Ollama"
   :models '("llama3.1:8b"))
