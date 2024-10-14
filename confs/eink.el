@@ -5,8 +5,8 @@
 (defvar my/default-font doom-font)
 (defvar my/eink-font (font-spec
                       :family "FiraCode Nerd Font"
-                      :size 16
-                      :weight 'black))
+                      :size 14
+                      :weight 'bold))
 (defvar my/eink-font-toggle-status t)
 
 (defun my/eink-toggle-font ()
