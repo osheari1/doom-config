@@ -7,7 +7,9 @@
         telega-accounts (list
                          (list "Riley" 'telega-database-dir telega-database-dir)
                          (list "Riley W" 'telega-database-dir
-                               (expand-file-name "w" telega-database-dir)))))
+                               (expand-file-name "w" telega-database-dir))))
+  ;; (evil-set-initial-state 'telega-chat-mode 'emacs)
+  )
 
 (map! :map global-map
       :desc "telega" "C-c t" telega-prefix-map)
